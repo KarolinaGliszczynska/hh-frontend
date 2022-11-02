@@ -28,11 +28,32 @@ const App = () => {
     return data
   }
 
+  const showMainView = () => {
+    console.log("showing main view")
+  }
+
+  const register = () => {
+    console.log("showing registration form")
+  }
+
+  const login = () => {
+    console.log("showing login form")
+  }
+
+  const contact = () => {
+    console.log("showing contact info")
+  }
+
   return (
     <div>
-      < Navbar />
+      < Navbar 
+        showMainView = {showMainView}
+        register = {register}
+        login = {login}
+        contact = {contact}
+      />
       <div className='container'>
-          < Header />
+          < Header  />
           < Events events={events} />
       </div>
     </div>
