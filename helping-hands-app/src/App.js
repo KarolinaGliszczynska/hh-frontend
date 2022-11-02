@@ -22,8 +22,8 @@ const App = () => {
 
   const fetchEvents = async () => {
     console.log("fetching events")
-    const res = await fetch('https://20glq.mocklab.io/events')
-    //const res = await fetch('http://localhost:8080/events')
+    //const res = await fetch('https://20glq.mocklab.io/events')
+    const res = await fetch('http://localhost:8080/events')
     const data = await res.json()
     return data
   }
@@ -54,7 +54,9 @@ const App = () => {
       />
       <div className='container'>
           < Header  />
-          < Events events={events} />
+          < Events 
+          events={events} 
+          />
       </div>
     </div>
   )
