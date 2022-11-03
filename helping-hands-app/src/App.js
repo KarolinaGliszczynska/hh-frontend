@@ -1,8 +1,15 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Events from './components/Events'
+import Event from './components/Event'
 import Navbar from './components/Navbar'
+import Homepage from './components/homepage'
+import Login from './components/login'
+import Registration from './components/registration'
+import Contact from './components/contact'
+import CreateEvent from './components/createEvent'
 import './App.css'
 
 const App = () => {
@@ -28,37 +35,42 @@ const App = () => {
     return data
   }
 
-  const showMainView = () => {
-    console.log("showing main view")
-  }
-
-  const register = () => {
-    console.log("showing registration form")
-  }
-
-  const login = () => {
-    console.log("showing login form")
-  }
-
-  const contact = () => {
-    console.log("showing contact info")
-  }
 
   return (
-    <div>
-      < Navbar 
-        showMainView = {showMainView}
-        register = {register}
-        login = {login}
-        contact = {contact}
-      />
-      <div className='container'>
-          < Header  />
-          < Events 
-          events={events} 
-          />
+    <Router>
+      <div className='app'>
+        < Navbar 
+        />
+        <div className='container'>
+          <Switch>
+            <Route exact path="/">
+            < Homepage  />
+            </Route>
+              
+            <Route path="/events">
+              < Header  />
+              < Events 
+                events={events} 
+              />
+            </Route>
+            <Route path = "/event">
+              <Event 
+                //event={event}   //we need a function the fetches the corrrect event based on which event card was clicked
+              />
+            </Route>
+            <Route path = "/login">
+              <Login />
+            </Route>
+            <Route path = "/registration">
+              <Registration />
+            </Route>
+            <Route path = "/contact">
+              <Contact />
+            </Route>
+          </Switch>  
+        </div>
       </div>
-    </div>
+    </Router>
   )
 }
 
