@@ -11,6 +11,7 @@ import Registration from './components/registration'
 import Contact from './components/contact'
 import CreateEvent from './components/createEvent'
 import './App.css'
+import EventDetail from './components/EventDetail'
 
 const App = () => {
   
@@ -53,8 +54,8 @@ const App = () => {
                 events={events} 
               />
             </Route>
-            <Route path = "/event">
-              <Event 
+            <Route path = "/eventDetails">
+              <EventDetail 
                 //event={event}   //we need a function the fetches the corrrect event based on which event card was clicked
               />
             </Route>
