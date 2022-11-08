@@ -6,61 +6,7 @@ body {
   margin: 16px;
 }
 
-.events-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
 
-.navbar {
-  display: flex;
-  align-items: center;
-  
-  background: rebeccapurple;
-  color: white;
-  font-family: Helvetica;
-  font-weight: 300;
-}
-
-.navbar__title {
-  margin-right: auto;
-  font-size: 150%;
-  padding: 12px 16px;
-}
-
-.navbar__item {
-  padding: 16px 16px;
-  cursor: pointer;
-  vertical-align: middle;
-}
-
-.all-events-header{
-  font-family: Helvetica;
-  color: rebeccapurple;
-  margin-bottom: 20px;
-}
-
-.event-card { 
-  width: 300px;
-  margin: 20px;
-  padding: 5px;
-  cursor: pointer;
-  font-family: Helvetica;
-  border-radius: 8px; 
-  box-shadow: 0 4px 10px rgba(0,0,0,.15); 
-  -webkit-box-shadow: 0 4px 10px rgba(0,0,0,.15); 
-  -moz-box-shadow: 0 4px 10px rgba(0,0,0,.15);}
-
-  .event-card:hover {
-    transform: scale(1.1); 
-    
-  }  
-
-.event-card-category {
-  color: white;
-  background-color: rebeccapurple;
-  text-align: center;
-}  
 
 
         

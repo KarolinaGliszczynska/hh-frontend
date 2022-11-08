@@ -11,6 +11,7 @@ import Registration from './components/registration'
 import Contact from './components/contact'
 import CreateEvent from './components/createEvent'
 import './App.css'
+import './components/Navbar.css'
 import EventDetail from './components/EventDetail'
 
 const App = () => {
@@ -49,7 +50,6 @@ const App = () => {
             </Route>
               
             <Route path="/events">
-              < Header  />
               < Events 
                 events={events} 
               />
