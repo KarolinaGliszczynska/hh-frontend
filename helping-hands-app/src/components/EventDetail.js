@@ -1,11 +1,16 @@
 import React from 'react'
+import JoinEventCard from "./JoinEventCard";
+import EventDetailCard from "./EventDetailCard";
 
-const EventDetail = () => {
-  return (
-    <div>
-      <h1>Event detail page</h1>
-    </div>
-  )
+const EventDetail = (event) => {
+      return (
+        <>
+            <div>
+                < EventDetailCard />
+                < JoinEventCard />
+            </div>
+        </>
+      )
 }
 
 export default EventDetail

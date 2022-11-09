@@ -1,42 +1,34 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import Header from './components/Header'
+import React, {useEffect, useState} from 'react'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Events from './components/Events'
-import Event from './components/Event'
 import Navbar from './components/Navbar'
 import Homepage from './components/homepage'
 import Login from './components/login'
 import Registration from './components/registration'
 import Contact from './components/contact'
-import CreateEvent from './components/createEvent'
 import './App.css'
 import './components/Navbar.css'
 import EventDetail from './components/EventDetail'
 
 const App = () => {
   
-  const [events, setEvents] = useState([]);
 
-  //fetching events data from server as soon as the page loads
-  useEffect(() => {
-    getEvents();
-  }, 
-  [])
+  const [eventId, setEventId] = useState(null)
+  const [event, setEvent] = useState(null);
 
-  const getEvents = async () => {
-    const eventsFromServer = await fetchEvents();
-    setEvents(eventsFromServer);
+
+/*
+  const getEvent = async (id) => {
+    const eventFromServer = await fetchEvent();
+    setEvent(eventFromServer)
   }
+*/
 
-  const fetchEvents = async () => {
-    console.log("fetching events")
-    //const res = await fetch('https://20glq.mocklab.io/events')
-    const res = await fetch('http://localhost:8080/events')
-    const data = await res.json()
-    return data
+  const fetchEvent = async (id) => {
+    const res = await fetch(`http://localhost:8080/event/{id}`)
+    let eventFromServer = await res.json()
+    setEvent(eventFromServer)
   }
-
 
   return (
     <Router>
@@ -50,13 +42,12 @@ const App = () => {
             </Route>
               
             <Route path="/events">
-              < Events 
-                events={events} 
+              < Events
               />
             </Route>
             <Route path = "/eventDetails">
               <EventDetail 
-                //event={event}   //we need a function the fetches the corrrect event based on which event card was clicked
+                event={event}   //we need a function the fetches the corrrect event based on which event card was clicked
               />
             </Route>
             <Route path = "/login">
