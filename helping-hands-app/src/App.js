@@ -11,24 +11,26 @@ import './components/Navbar.css'
 import EventDetail from './components/EventDetail'
 
 const App = () => {
-  
 
-  const [eventId, setEventId] = useState(null)
-  const [event, setEvent] = useState(null);
+  const [events, setEvents] = useState([]);
 
-
-/*
-  const getEvent = async (id) => {
-    const eventFromServer = await fetchEvent();
-    setEvent(eventFromServer)
+  const getEvents = async () => {
+    const eventsFromServer = await fetchEvents();
+    setEvents(eventsFromServer);
+    console.log(events)
   }
-*/
 
-  const fetchEvent = async (id) => {
-    const res = await fetch(`http://localhost:8080/event/{id}`)
-    let eventFromServer = await res.json()
-    setEvent(eventFromServer)
+  useEffect(() => {
+        getEvents();
+      },
+      [])
+
+  const fetchEvents = async () => {
+    console.log("fetching events")
+    const res = await fetch('http://localhost:8080/events')
+    return await res.json()
   }
+
 
   return (
     <Router>
@@ -38,16 +40,17 @@ const App = () => {
         <div className='container'>
           <Switch>
             <Route exact path="/">
-            < Homepage  />
+              < Homepage  />
             </Route>
               
             <Route path="/events">
               < Events
+                  events = {events}
               />
             </Route>
             <Route path = "/eventDetails">
               <EventDetail 
-                event={event}   //we need a function the fetches the corrrect event based on which event card was clicked
+                  //we need a function the fetches the corrrect event based on which event card was clicked
               />
             </Route>
             <Route path = "/login">

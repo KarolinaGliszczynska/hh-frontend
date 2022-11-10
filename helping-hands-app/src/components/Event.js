@@ -2,12 +2,8 @@ import React from 'react'
 import './Events.css'
 import Calendar from "./Calendar";
 
-const Event = ({ event, setEvent }) => {
+const Event = ({ event }) => {
 
-     const changeEvent = ()=>{
-         console.log(event)
-         setEvent(event)
-     }
       return (
         <div onClick={() => changeEvent()}>
           <h5 className="event-card-category">{event.eventCategory}</h5>

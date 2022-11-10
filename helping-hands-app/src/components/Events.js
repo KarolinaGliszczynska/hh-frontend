@@ -7,23 +7,8 @@ import './Events.css'
 import Header from "./Header";
 
 
-const Events = () => {
-    const [events, setEvents] = useState([]);
-
-    const getEvents = async () => {
-        const eventsFromServer = await fetchEvents();
-        setEvents(eventsFromServer);
-    }
-
-    useEffect(() => {
-            getEvents();
-        },
-        [])
-
-    const fetchEvents = async () => {
-        const res = await fetch('http://localhost:8080/events')
-        return await res.json()
-    }
+const Events = (events) => {
+    const data = Array.from(events);
 
     return (
           <>
@@ -31,20 +16,25 @@ const Events = () => {
             <div className='main-container'>
                 < Header  />
 
-                <div className='events-container'>
-                  {events.map((event) => (
-
-                    <Link to="/eventDetails" key={event.eventId}>
-                      <div className='event-card'>
-                          <Event
-                          />
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+                {data?.length > 0 ? (
+                    <div className='events-container'>
+                        {data.map((event) => (
+                            <Link to="/eventDetails">
+                                <div className='event-card'>
+                                    <Event key={event.ID} event={event} />
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                    ) : (
+                    <div className="empty">
+                        <h2>No events found</h2>
+                    </div>
+                    )}
             </div>
           </>
       )
     }
 
 export default Events
+
