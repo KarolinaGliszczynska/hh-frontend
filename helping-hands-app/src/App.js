@@ -14,19 +14,18 @@ const App = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-        getEvents();
+        fetchEvents();
       },
       [])
 
-  const getEvents = async () => {
-    const eventsFromServer = await fetchEvents();
-    setEvents(eventsFromServer);
-  }
-
-  const fetchEvents = async () => {
-    const res = await fetch('http://localhost:8080/events')
-    const data = await res.json()
-    return data
+  const fetchEvents = ()=>{
+    fetch('http://localhost:8080/events')
+        .then(res => {
+          return res.json();
+        })
+        .then(data => {
+          setEvents(data);
+        })
   }
 
   return (
