@@ -5,20 +5,19 @@ import EventDetailCard from "./EventDetailCard";
 
 const EventDetail = ({match}) => {
     const {id} = useParams();
-    const [data, setData] = useState([]);
+    const [event, setEvent] = useState([]);
 
     useEffect(() => {
         fetchEvent();
     }, []);
 
     const fetchEvent = () => {
-        console.log(id)
         fetch(`http://localhost:8080/events/${id}`)
             .then(res => {
                 return res.json();
             })
             .then(data => {
-                setData(data);
+                setEvent(data);
                 console.log(data);
             })
             .catch((err) => console.log(err));
@@ -27,8 +26,8 @@ const EventDetail = ({match}) => {
       return (
         <>
             <div>
-                < EventDetailCard clickedEvent = {data} />
-                < JoinEventCard clickedEvent = {data} />
+                < EventDetailCard event = {event} />
+                < JoinEventCard event = {event} />
             </div>
         </>
       )
