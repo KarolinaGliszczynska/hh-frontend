@@ -21,7 +21,6 @@ const App = () => {
 
   const getEvents = async () => {
     const eventsFromServer = await fetchEvents();
-    console.log(eventsFromServer)
     setEvents(eventsFromServer);
   }
 
@@ -30,6 +29,7 @@ const App = () => {
     const data = await res.json()
     return data
   }
+
 
   return (
     <Router>

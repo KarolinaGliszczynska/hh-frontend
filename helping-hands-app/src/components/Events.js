@@ -6,6 +6,8 @@ import Header from "./Header";
 
 
 const Events = (events) => {
+    console.log(events)
+    console.log(events.events)
     //const data = Array.from(events);
 
     return (
@@ -15,7 +17,7 @@ const Events = (events) => {
                 < Header  />
 
                     <div className='events-container'>
-                        {events.map((event) => (
+                        {events.events.map((event) => (
                             <Link to="/eventDetails">
                                 <div className='event-card'>
                                     <Event key={event.ID} event={event} />
