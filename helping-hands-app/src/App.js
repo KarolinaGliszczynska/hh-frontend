@@ -13,7 +13,6 @@ const App = () => {
 
   const [events, setEvents] = useState([]);
 
-  //fetching events data from server as soon as the page loads
   useEffect(() => {
         getEvents();
       },
@@ -29,7 +28,6 @@ const App = () => {
     const data = await res.json()
     return data
   }
-
 
   return (
     <Router>

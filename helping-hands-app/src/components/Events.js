@@ -6,9 +6,6 @@ import Header from "./Header";
 
 
 const Events = (events) => {
-    console.log(events)
-    console.log(events.events)
-    //const data = Array.from(events);
 
     return (
           <>
