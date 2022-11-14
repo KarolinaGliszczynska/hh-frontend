@@ -14,16 +14,16 @@ const Events = (events) => {
                 < Header  />
 
                     <div className='events-container'>
-                        {events.events.map((event) => (
-                            <Link to="/eventDetails">
+                        { events && events.events.map((event) => (
+                            <Link to={`/eventDetails/${event.eventId}`}>
                                 <div className='event-card'>
-                                    <Event key={event.ID} event={event} />
+                                    <Event key={event.eventId}
+                                           event={event}
+                                    />
                                 </div>
                             </Link>
                         ))}
                     </div>
-
-                }
             </div>
           </>
       )
