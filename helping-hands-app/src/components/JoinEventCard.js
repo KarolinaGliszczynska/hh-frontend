@@ -1,7 +1,5 @@
 import React from 'react'
-import './Events.css'
 import Calendar from "./Calendar";
-import "./JoinEventCard.css"
 
 const JoinEventCard = ({ event }) => {
     return (

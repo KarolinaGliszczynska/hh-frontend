@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import Calendar from 'react-calendar';
-import './Calendar.css';
+
 import 'react-calendar/dist/Calendar.css'
 
 const dateOfEvent = new Date('2022-12-01')

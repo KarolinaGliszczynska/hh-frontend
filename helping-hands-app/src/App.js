@@ -7,30 +7,29 @@ import Login from './components/login'
 import Registration from './components/registration'
 import Contact from './components/contact'
 import './App.css'
-import './components/Navbar.css'
 import EventDetail from './components/EventDetail'
 
 const App = () => {
 
   const [events, setEvents] = useState([]);
 
-  const getEvents = async () => {
-    const eventsFromServer = await fetchEvents();
-    setEvents(eventsFromServer);
-    console.log(events)
-  }
-
+  //fetching events data from server as soon as the page loads
   useEffect(() => {
         getEvents();
       },
       [])
 
-  const fetchEvents = async () => {
-    console.log("fetching events")
-    const res = await fetch('http://localhost:8080/events')
-    return await res.json()
+  const getEvents = async () => {
+    const eventsFromServer = await fetchEvents();
+    console.log(eventsFromServer)
+    setEvents(eventsFromServer);
   }
 
+  const fetchEvents = async () => {
+    const res = await fetch('http://localhost:8080/events')
+    const data = await res.json()
+    return data
+  }
 
   return (
     <Router>

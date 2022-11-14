@@ -1,4 +1,4 @@
-import "./EventDetailCard.css"
+
 
 const EventDetailCard = ({ event }) => {
     return (
