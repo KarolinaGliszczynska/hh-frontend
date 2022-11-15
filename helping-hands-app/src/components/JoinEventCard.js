@@ -5,8 +5,21 @@ const JoinEventCard = ({ event }) => {
     console.log(event.eventSlots);
 
     const handleClick = (event) => {
-        console.log(event.target.getAttribute('slot-id'));
+        const clickedSlotId = event.target.getAttribute('slot-id');
+        console.log(clickedSlotId);
+        fecthPostRequestToSlot(clickedSlotId);
     }
+
+    const fecthPostRequestToSlot = (slotId) => {
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Length': 0},
+        };
+        fetch(`http://localhost:8080/users/assign/${slotId}`, requestOptions)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch((err) => console.log(err));
+    };
 
     return (
         <div className='join-event-card'>
