@@ -4,6 +4,10 @@ import Calendar from "./Calendar";
 const JoinEventCard = ({ event }) => {
     console.log(event.eventSlots);
 
+    const handleClick = (event) => {
+        console.log(event.target.getAttribute('slot-id'));
+    }
+
     return (
         <div className='join-event-card'>
             <h5 className="card-header">Join event</h5>
@@ -13,9 +17,15 @@ const JoinEventCard = ({ event }) => {
                     event = {event}
                 /> : " "}
             </div>
-            <div className={'slot-buttons-container'}>
+            <div>
+                <h4>Pick a time slot</h4>
+            </div>
+            <div className='slot-buttons-container'>
               {event.eventSlots
-                ? (event.eventSlots.map(slot => <button>{slot.slotStartTime}</button>))
+                ? (event.eventSlots.map(slot =>
+                      <button className='slot-button' slot-id={slot.slotId} onClick={(event)=>handleClick(event)}>
+                      {slot.slotStartTime}
+                      </button>))
                 : (<p>loading slots...</p>)}
             </div>
             <div className='button-row'>
