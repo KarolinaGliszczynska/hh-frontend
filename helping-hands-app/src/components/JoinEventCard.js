@@ -2,8 +2,7 @@ import React, {useState} from 'react'
 import Calendar from "./Calendar";
 
 const JoinEventCard = ({ event }) => {
-    const slots = event.eventSlots;
-    console.log(slots);
+    console.log(event.eventSlots);
 
     return (
         <div className='join-event-card'>
@@ -15,9 +14,9 @@ const JoinEventCard = ({ event }) => {
                 /> : " "}
             </div>
             <div className={'slot-buttons-container'}>
-                {slots.map ((slot) => {
-                    <button>slot</button>
-                }) }
+              {event.eventSlots
+                ? (event.eventSlots.map(slot => <button>{slot.slotStartTime}</button>))
+                : (<p>loading slots...</p>)}
             </div>
             <div className='button-row'>
                 <button className='join-button'>Join</button>
