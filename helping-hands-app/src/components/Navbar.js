@@ -1,17 +1,30 @@
 import { Link } from "react-router-dom";
+import React from 'react';
+import { NavbarMenuItems } from "./NavbarMenuItems"
+
 
 const Navbar = (props) => (
-    <header className='navbar'>
-        <div className='navbar__title navbar__item'>
-                <Link to="/">Helping Hands</Link>
+    <div className='navbar'>
+        <div className='navbar__title'>
+        <div >
+            <img className='logoIcon' src={process.env.PUBLIC_URL + '/logoIcon.png'} alt="logo" />
         </div>
-        <div className='navbar__item'>
-                <Link to="/registration">Sign Up</Link>
+            <h1 className='header'><Link to="/">HelpingHands</Link></h1>
         </div>
-        <div className='navbar__item'>
-                <Link to="/login">Log in</Link>
-        </div>
-    </header>
+
+            <ul className='menuItems'>
+            {NavbarMenuItems.map((item,index) =>{
+                return (
+                        <li key={index}>
+                            <a className={item.cName} href={item.url}>
+                             {item.title}
+                            </a>
+                        </li>
+                        )
+            })}
+            </ul>
+
+    </div>
 );
   
   export default Navbar

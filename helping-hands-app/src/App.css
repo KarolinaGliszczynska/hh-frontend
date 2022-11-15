@@ -1,39 +1,123 @@
-/* All pages */
 
-body {
-  margin: 0px;
+/* All pages */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
 }
+
 
 .container {
   margin: 16px;
 }
+
+
+h1.header {
+  /* header */
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 100%;
+  color: var(--green-900) ;
+  /* identical to box height, or 32px */
+  letter-spacing: -0.005em;
+}
+
+a {
+  transform: scale(10);
+  transition: all 0.3s ease-in-out 0.2s;
+  color: var(--green-900);
+
+}
+a:hover { text-decoration: none;
+color: var(--green-600);}
+
+  /* colors ----------------------------------------------------------*/
+:root {
+  /* neutral */
+  --neutral-25: #FFFFFF;
+  --neutral-100: #F6F5F2;
+  --neutral-200: #EDECE6;
+  --neutral-300: #CBC9C2;
+  --neutral-400: #97958E;
+  --neutral-500: #52514C;
+  --neutral-600: #464337;
+  --neutral-700: #3B3626;
+  --neutral-800: #2F2A18;
+  --neutral-900: #27210E;
+
+  /* green */
+  --green-100: #F5F8E6;
+  --green-200: #EAF2CF;
+  --green-300: #CCD8A9;
+  --green-400: #A3B181;
+  --green-500: #6F7D50;
+  --green-600: #5A6B3A;
+  --green-700: #475928;
+  --green-800: #2A3814;
+  --green-900: #283B0F;
+
+  /* allert */
+  --allert-100: #FFEEE3;
+  --allert-400: #FFA899;
+  --allert-700: #B73B48;
+  --allert-800: #93253A;
+  --allert-900: #7A1631;
+
+  /* warn */
+  --warn-500: #FCB635;
+  --warn-600: #D89326;
+
+  /* linear */
+  --linear-neutral: linear-gradient(180deg, rgba(111, 125, 80, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%) ;
+  --linear-green: linear-gradient(180deg, #475928 0%, rgba(107, 130, 68, 0.56) 100%);
+}
+
+
 
 /* Navbar */
 
 .navbar {
   display: flex;
   align-items: center;
-  background: black;
+  justify-content: center;
+  background: #FFFFFF;
+  padding: 1%;
+  filter: drop-shadow(0px 11px 4px rgba(0, 0, 0, 0.19));
 
 }
 
-.navbar a {
-  color: white;
-}
 
 .navbar__title {
+  display: flex;
+  align-items: center;
+  justify-content: start;
   margin-right: auto;
-  font-size: 150%;
-  padding: 12px 16px;
+  margin-left: 2rem;
 }
 
-.navbar__item {
-  padding: 16px 16px;
-  cursor: pointer;
-  vertical-align: middle;
-  color: white !important;
-  font-weight: 300;
+.logoIcon {
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-top: -5px;
 }
+.menuItems{
+  display:grid;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  grid-template-columns: repeat(5,auto);
+  grid-gap:15px;
+  list-style: none;
+  text-align: center;
+  justify-content: end;
+  margin-right: 2rem;
+
+
+}
+
 
 /* Sidebar */
 

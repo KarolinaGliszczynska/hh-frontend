@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Event from './Event'
 import { Link } from 'react-router-dom'
-import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar/Sidebar";
 import Header from "./Header";
 
 
