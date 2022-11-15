@@ -15,9 +15,9 @@ const JoinEventCard = ({ event }) => {
                 /> : " "}
             </div>
             <div className={'slot-buttons-container'}>
-                {slots ? slots.map ((slot) => {
+                {slots.map ((slot) => {
                     <button>slot</button>
-                }) : <p>loading slots...</p>}
+                }) }
             </div>
             <div className='button-row'>
                 <button className='join-button'>Join</button>
