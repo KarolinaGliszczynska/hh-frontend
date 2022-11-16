@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b68c0c5-f712-4e85-aaef-6c0df6fc9768" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/helping-hands-app/src/components/sidebar/SidebarFilterItems.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helping-hands-app/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/helping-hands-app/src/App.css" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/helping-hands-app/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/helping-hands-app/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helping-hands-app/src/components/Events.js" beforeDir="false" afterPath="$PROJECT_DIR$/helping-hands-app/src/components/Events.js" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/helping-hands-app/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/helping-hands-app/src/components/sidebar/Sidebar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,10 +42,17 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/helping-hands-app/src/components/sidebar" />
+<<<<<<< Updated upstream
       <recent name="$PROJECT_DIR$/helping-hands-app/public" />
       <recent name="$PROJECT_DIR$/helping-hands-app/src/components/main-page" />
       <recent name="$PROJECT_DIR$/helping-hands-app/src/components/navbar" />
       <recent name="$PROJECT_DIR$/helping-hands-app/src/components/HomePage" />
+=======
+      <recent name="$PROJECT_DIR$/helping-hands-app/src/components" />
+      <recent name="$PROJECT_DIR$/helping-hands-app/public" />
+      <recent name="$PROJECT_DIR$/helping-hands-app/src/components/main-page" />
+      <recent name="$PROJECT_DIR$/helping-hands-app/src/components/navbar" />
+>>>>>>> Stashed changes
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -51,7 +63,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668412355447</updated>
+<<<<<<< Updated upstream
       <workItem from="1668412360730" duration="64669000" />
+=======
+      <workItem from="1668412360730" duration="65406000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
