@@ -9,8 +9,8 @@ const Events = (events) => {
 
     return (
           <>
-            < Sidebar />
-            <div className='main-container'>
+            < Sidebar/>
+            <div className='events-main-container'>
                 < Header  />
 
                     <div className='events-container'>
