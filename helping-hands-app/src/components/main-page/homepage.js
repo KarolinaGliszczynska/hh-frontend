@@ -16,7 +16,8 @@ const Homepage = () => {
                 <div className='column'>
                         <div className="home-search">
                             <h5 className="thin-header">Check who need your help nearby!</h5>
-                                  <Link to="/events">See all events</Link>
+                            <Link className="btn-link" to="/events"><button className='btn-light'>See all events</button></Link>
+
                         </div>
 
                 </div>
@@ -24,26 +25,27 @@ const Homepage = () => {
             <div className='row'>
                 <div className='column'>
                     <div className="home-call-1">
-                        <h5 className="thin-header">Check who need your help nearby!</h5>
+                        <h5 className="thin-header">Create event</h5>
+                           <Link className="btn-link" to="/events"><button className='btn-light'>Create</button></Link>
+
                     </div>
                 </div>
                 <div className='column'>
                     <div className="home-call-2">
-                        <h5 className="thin-header">Check who need your help nearby!</h5>
+                        <h5 className="thin-header">Join our community</h5>
+                           <Link className="btn-link" to="/registration"><button className='btn-light'>Register</button></Link>
+
                     </div>
                 </div>
                 <div className='column'>
                     <div className="home-call-1">
-                        <h5 className="thin-header">Check who need your help nearby!</h5>
+                        <h5 className="thin-header">About project</h5>
+                            <Link className="btn-link" to="/events"><button className='btn-light'>Read</button></Link>
+
                     </div>
                 </div>
 
             </div>
-
-
-
-
-
             </div>
         </div>
     )
