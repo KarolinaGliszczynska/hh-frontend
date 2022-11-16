@@ -79,7 +79,14 @@ a:hover { text-decoration: none;
 
 /* buttons, text fields ----------------------------------------------------------*/
 
-
+input{
+  width: 100%;
+  padding: 5%;
+  background: #EDECE6;
+  border: 1px solid #6F7D50;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+}
 .btn-light{
   padding: 10px 43px ;
   background: #F6F5F2;
@@ -87,6 +94,7 @@ a:hover { text-decoration: none;
   border-radius: 36px;
   color: var(--green-900);
   opacity: 1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 
 }
@@ -100,6 +108,7 @@ a:hover { text-decoration: none;
   opacity: 1;
   transform: scale(1.1);
   cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
@@ -161,11 +170,11 @@ a:hover { text-decoration: none;
 .sidenav{
   position: fixed;
   width: 250px;
-  top:75px;
+  top:48px;
   left: 0;
   bottom: 0;
-  background: #111;
-  padding-top: 50px;
+  background: linear-gradient(180deg, #3c4028 0%, #72754C 100%) ;
+  padding: 50px 1% 1% 1%;
 }
 
 .sidenav h5{
@@ -181,12 +190,8 @@ a:hover { text-decoration: none;
   color: #bbb;
   margin-bottom: 10px;
   padding: 5%;
+
 }
-
-
-
-
-
 
 
 /* Main page---------- */
