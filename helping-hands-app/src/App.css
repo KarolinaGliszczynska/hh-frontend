@@ -1,7 +1,6 @@
 
 /* All pages */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
@@ -25,8 +24,6 @@ h1.header {
 }
 
 a {
-  transform: scale(10);
-  transition: all 0.3s ease-in-out 0.2s;
   color: var(--green-900);
 
 }
@@ -75,15 +72,21 @@ color: var(--green-600);}
 }
 
 
+/* buttons, text fields ----------------------------------------------------------*/
+
+
+
+
+
 
 /* Navbar */
 
 .navbar {
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #FFFFFF;
-  padding: 1%;
   filter: drop-shadow(0px 11px 4px rgba(0, 0, 0, 0.19));
 
 }
@@ -97,15 +100,14 @@ color: var(--green-600);}
   margin-left: 2rem;
 }
 
-.logoIcon {
+.logo-icon {
   width: 40px;
   align-items: center;
   justify-content: center;
   margin-top: -5px;
 }
-.menuItems{
+.menu-items{
   display:grid;
-  margin: 0;
   position: relative;
   top: 50%;
   grid-template-columns: repeat(5,auto);
@@ -113,9 +115,6 @@ color: var(--green-600);}
   list-style: none;
   text-align: center;
   justify-content: end;
-  margin-right: 2rem;
-
-
 }
 
 
@@ -146,12 +145,11 @@ color: var(--green-600);}
 }
 
 /* All events */
-.main-container {
+.events-main-container {
   margin-left: 250px;
 }
 .events-container {
   display: flex;
-
   flex-wrap: wrap;
 }
 
@@ -239,7 +237,81 @@ color: var(--green-600);}
   margin-bottom: 30px;
 }
 
+/* Main page---------- */
+.bg-image-main{
+  background: url(components/main-page/bgimagemain.png) no-repeat center center fixed;
+  height: 100%;
+}
+
+.home-header-container{
+  color: var(--neutral-25);
+  align-self: center;
+}
+
+.row {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.home-header{
+  padding: 20% 10% 20% 30%;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  color: var(--neutral-25);
+}
+
+.home-search{
+  align-self: center;
+  color: var(--neutral-25);
+  max-width: 50%;
+  padding: 5%;
+  position: relative;
+  background: #2F2A18;
+  opacity: 0.6;
+  border-radius: 15px;
+  text-align: center;
+}
+.thin-header{
+  color: white;
+  font-style: normal;
+  font-weight: 300;
+
+}
+
+.home-call-1{
+  align-self: center;
+  color: var(--neutral-25);
+  text-align: center;
+  position: relative;
+  background: var(--neutral-400);
+  opacity: 0.6;
+  padding: 5%;
+  width: 100%;
 
 
+}
 
-        
+.home-call-2{
+  align-self: center;
+  color: var(--neutral-25);
+  text-align: center;
+  position: relative;
+  background: var(--neutral-700);
+  opacity: 0.6;
+  padding: 5%;
+  width: 100%;
+
+
+}
