@@ -12,33 +12,21 @@ import EventDetail from './components/EventDetail'
 const App = () => {
 
   const [events, setEvents] = useState([]);
-  const [clickedEvent, setClickedEvent] = useState(null);
-  const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
-        fetchEvents();
+        getEvents();
       },
       [])
 
-  const fetchEvents = ()=>{
-    fetch('http://localhost:8080/events')
-        .then(res => {
-          return res.json();
-        })
-        .then(data => {
-          setIsPending(false);
-          setEvents(data);
-        })
+  const getEvents = async () => {
+    const eventsFromServer = await fetchEvents();
+    setEvents(eventsFromServer);
   }
 
-  const handleCardClick = (eventId) => {
-    fetch(`http://localhost:8080/event/{eventId}`)
-        .then(res => {
-          return res.json();
-        })
-        .then(data => {
-          setClickedEvent(data);
-        })
+  const fetchEvents = async () => {
+    const res = await fetch('http://localhost:8080/events')
+    const data = await res.json()
+    return data
   }
 
   return (
@@ -55,13 +43,10 @@ const App = () => {
             <Route path="/events">
               < Events
                   events = {events}
-                  handleCardClick = {handleCardClick}
-                  clickedEvent = {clickedEvent}
               />
             </Route>
-            <Route path = "/eventDetails/:id">
-              <EventDetail
-                  component = {clickedEvent}
+            <Route path = "/eventDetails">
+              <EventDetail 
                   //we need a function the fetches the corrrect event based on which event card was clicked
               />
             </Route>
