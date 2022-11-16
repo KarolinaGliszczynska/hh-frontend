@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import { SidebarFilterItems } from "./SidebarFilterItems"
 
 const Sidebar = (props) => (
     <nav className='sidenav'>
+
+
         <ul className='sidenav-items'>
-            <li className="sidenav-item">
-                <h5>Check who needs help in your area!</h5>
+            <li className="sidenav-item ">
+                <h5 className="thin-header">Check who needs help in your area!</h5>
             </li>
             <li className="sidenav-item">
                 <input type="text" placeholder="City"></input>
@@ -13,7 +16,7 @@ const Sidebar = (props) => (
                 <input type="text" placeholder="Category"></input>
             </li>
             <li className="sidenav-item">
-                <button type="submit" className="sidenav-button">Filter</button>
+                <button type="submit" className="btn-light">Filter</button>
             </li>
 
         </ul>
