@@ -1,16 +1,14 @@
 
 /* All pages */
 * {
-  margin: 0;
+  margin: 0px;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
 }
 
-
 .container {
   margin: 16px;
 }
-
 
 h1.header {
   /* header */
@@ -144,98 +142,11 @@ color: var(--green-600);}
   margin-bottom: 10px;
 }
 
-/* All events */
-.events-main-container {
-  margin-left: 250px;
-}
-.events-container {
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.all-events-header{
-  color: black;
-  margin-bottom: 20px;
-}
 
-.event-card {
-  width: 300px;
-  margin: 10px;
-  padding: 5px;
-  color: black;
-  cursor: pointer;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.15);
-  -webkit-box-shadow: 0 4px 10px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 4px 10px rgba(0,0,0,.15);}
 
-.event-card:hover {
-  transform: scale(1.1);
-}
 
-.event-card-category {
-  color: white;
-  background-color: black;
-  text-align: center;
-}
 
-/* Event detail card */
-.event-detail-card {
-  position: fixed;
-  left: 10px;
-  width: 60%;
-  margin: 10px;
-  padding: 5px;
-  color: black;
-  cursor: pointer;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.15);
-  -webkit-box-shadow: 0 4px 10px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 4px 10px rgba(0,0,0,.15);}
-
-/* Join event card */
-.join-event-card {
-  position: fixed;
-  right: 10px;
-  width: 35%;
-  margin: 10px;
-  padding: 5px;
-  color: black;
-  cursor: pointer;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.15);
-  -webkit-box-shadow: 0 4px 10px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 4px 10px rgba(0,0,0,.15);}
-
-.calendar-display {
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.button-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.join-button {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  background-color: black;
-  color: white;
-  border-radius: 12px;
-  font-size: 16px;
-  padding: 8px 20px;
-}
-
-.card-header {
-  color: white;
-  background-color: black;
-  text-align: center;
-  margin-bottom: 30px;
-}
 
 /* Main page---------- */
 .bg-image-main{
@@ -336,3 +247,123 @@ color: var(--green-600);}
   opacity: 1;
 
 }
+
+
+
+
+/* All events */
+.events-main-container {
+  margin-left: 250px;
+}
+.events-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.event-card {
+  width: 300px;
+  margin: 10px;
+  padding: 5px;
+  color: black;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  -webkit-box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 4px 10px rgba(0,0,0,.15);}
+
+.event-card:hover {
+  transform: scale(1.1);
+}
+
+.event-card-category {
+  color: white;
+  background-color: black;
+  text-align: center;
+}
+
+/* Event detail card */
+.event-detail-card {
+  position: fixed;
+  left: 10px;
+  width: 60%;
+  margin: 10px;
+  padding: 5px;
+  color: black;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  -webkit-box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 4px 10px rgba(0,0,0,.15);}
+
+/* Join event card */
+.join-event-card {
+  position: fixed;
+  right: 10px;
+  width: 35%;
+  margin: 10px;
+  padding: 5px;
+  color: black;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  -webkit-box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 4px 10px rgba(0,0,0,.15);}
+
+.calendar-display {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.join-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: black;
+  color: white;
+  border-radius: 12px;
+  font-size: 16px;
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+.join-button:hover{
+  transform: scale(1.1);
+}
+
+.card-header {
+  color: white;
+  background-color: black;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/*Join event buttons*/
+.slot-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slot-button {
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+  font-size: 16px;
+  padding: 5px 5px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.slot-button:hover{
+  transform: scale(1.1);
+}
+
+
+
+
