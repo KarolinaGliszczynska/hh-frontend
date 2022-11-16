@@ -8,6 +8,7 @@ import Header from "./Header";
 const Events = (events) => {
 
     return (
+
           <div className='container'>
                 < Sidebar />
                 <div className='events-main-container'>
@@ -25,6 +26,7 @@ const Events = (events) => {
 
                 </div>
           </div>
+
       )
     }
 
