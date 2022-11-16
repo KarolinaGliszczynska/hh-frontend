@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Events from './components/Events'
-import Navbar from './components/navbar/Navbar'
-import Homepage from './components/main-page/homepage'
+import Navbar from './components/Navbar'
+import Homepage from './components/homepage'
 import Login from './components/login'
 import Registration from './components/registration'
 import Contact from './components/contact'
@@ -12,21 +12,33 @@ import EventDetail from './components/EventDetail'
 const App = () => {
 
   const [events, setEvents] = useState([]);
+  const [clickedEvent, setClickedEvent] = useState(null);
+  const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
-        getEvents();
+        fetchEvents();
       },
       [])
 
-  const getEvents = async () => {
-    const eventsFromServer = await fetchEvents();
-    setEvents(eventsFromServer);
+  const fetchEvents = ()=>{
+    fetch('http://localhost:8080/events')
+        .then(res => {
+          return res.json();
+        })
+        .then(data => {
+          setIsPending(false);
+          setEvents(data);
+        })
   }
 
-  const fetchEvents = async () => {
-    const res = await fetch('http://localhost:8080/events')
-    const data = await res.json()
-    return data
+  const handleCardClick = (eventId) => {
+    fetch(`http://localhost:8080/event/{eventId}`)
+        .then(res => {
+          return res.json();
+        })
+        .then(data => {
+          setClickedEvent(data);
+        })
   }
 
   return (
@@ -34,7 +46,7 @@ const App = () => {
       <div className='app'>
         < Navbar 
         />
-        <div >
+        <div className='container'>
           <Switch>
             <Route exact path="/">
               < Homepage  />
@@ -43,10 +55,13 @@ const App = () => {
             <Route path="/events">
               < Events
                   events = {events}
+                  handleCardClick = {handleCardClick}
+                  clickedEvent = {clickedEvent}
               />
             </Route>
-            <Route path = "/eventDetails">
-              <EventDetail 
+            <Route path = "/eventDetails/:id">
+              <EventDetail
+                  component = {clickedEvent}
                   //we need a function the fetches the corrrect event based on which event card was clicked
               />
             </Route>
