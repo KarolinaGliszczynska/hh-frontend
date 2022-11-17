@@ -199,6 +199,7 @@ input{
 
 /* Main page---------- */
 .bg-image-main{
+    margin-top: 48px;
     background: url(components/main-page/bgimagemain.png) no-repeat center center ;
     height: 100%;
 
@@ -312,11 +313,38 @@ input{
     margin-bottom: 0;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+.event-card-date-col {
+    display: flex;
+    width: 30px;
+    flex-direction: column;
+    flex:1;
+}
+
+.event-card-description-col
+{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .event-card-pic{
     width: 100%;
     height: 200px;
 }
-
+#col1{
+    flex-basis: 50px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 0;
+    align-items: center;
+    padding-top: 15px;
+    background: var(--neutral-25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#col2{
+    padding-left: 5%;
+}
 
 /* Event detail card */
 
@@ -334,6 +362,7 @@ input{
     box-shadow: 0 4px 10px rgba(0,0,0,.15);
 
 }
+
 
 /* Join event card */
 .join-event-card {
