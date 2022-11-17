@@ -273,7 +273,7 @@ input{
 
 /* All events */
 .events-main-container {
-    margin-left: 250px;
+    margin-left: 255px;
 }
 .events-container {
     display: flex;
@@ -283,13 +283,14 @@ input{
 .event-card {
     width: 300px;
     margin: 10px;
-    padding: 5px;
+    background: var(--neutral-100);
     color: black;
     cursor: pointer;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,.15);
     -webkit-box-shadow: 0 4px 10px rgba(0,0,0,.15);
     -moz-box-shadow: 0 4px 10px rgba(0,0,0,.15);}
+
 
 .event-card:hover {
     transform: scale(1.1);

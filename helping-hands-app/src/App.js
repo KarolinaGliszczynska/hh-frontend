@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Events from './components/Events'
+import Events from './components/AllEvents/Events'
 import Navbar from './components/navbar/Navbar'
 import Homepage from './components/main-page/homepage'
 import Login from './components/login'

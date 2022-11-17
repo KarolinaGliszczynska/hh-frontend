@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { SidebarFilterItems } from "./SidebarFilterItems"
+
 
 const Sidebar = (props) => (
     <nav className='sidenav'>
