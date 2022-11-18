@@ -12,8 +12,10 @@ const Event = ({ event }) => {
              <   img className='event-card-pic' src={pic} alt="event-pic" />
           <div className='event-card-details row'>
                 <div id='col1'  className='column'>
+                 <p>{year}</p>
                 <h2>{day}</h2>
                     <p>{monthName}</p>
+
                     </div>
               <div id='col2' className='column'>
                 <h4>

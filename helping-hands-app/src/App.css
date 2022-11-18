@@ -290,12 +290,14 @@ input{
 
 .event-card {
     width: 300px;
+    height: 400px;
     margin: 15px;
     background: var(--neutral-100);
     color: black;
     cursor: pointer;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
+    overflow: hidden;
 }
 
 
@@ -315,17 +317,22 @@ input{
 }
 
 .event-card-date-col {
+    align-self: start;
     display: flex;
     width: 30px;
     flex-direction: column;
     flex:1;
+    justifyContent: space-between;
+
 }
+
 
 .event-card-description-col
 {
     display: flex;
     flex-direction: column;
     flex: 1;
+    overflow: hidden;
 }
 
 .event-card-pic{
@@ -337,6 +344,7 @@ input{
     flex-grow: 0;
     flex-shrink: 0;
     margin: 0;
+    align-self: baseline;
     align-items: center;
     padding-top: 15px;
     background: var(--neutral-25);
@@ -344,6 +352,7 @@ input{
 }
 #col2{
     padding-left: 5%;
+    overflow: hidden;
 }
 
 /* Event detail card */
