@@ -41,8 +41,10 @@ const Registration = () => {
         e.preventDefault();
         if (userNickname === '' || userEmail === '' || password === '') {
             setError(true);
+            setPasswordError(false);
         } else if (password !== password2) {
             setPasswordError(true);
+            setError(false);
         } else {
             const user = {userNickname,userEmail,password};
             fetch("http://localhost:8080/users/register",{
