@@ -3,23 +3,25 @@ import { useState } from 'react';
 const Registration = () => {
 
     // States for registration
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const [userNickname, setUserNickname] = useState('');
+    const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
 
     // States for checking the errors
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
 
     // Handling the name change
     const handleName = (e) => {
-        setName(e.target.value);
+        setUserNickname(e.target.value);
         setSubmitted(false);
     };
 
     // Handling the email change
     const handleEmail = (e) => {
-        setEmail(e.target.value);
+        setUserEmail(e.target.value);
         setSubmitted(false);
     };
 
@@ -29,14 +31,31 @@ const Registration = () => {
         setSubmitted(false);
     };
 
+    const handlePassword2 = (e) => {
+        setPassword2(e.target.value);
+        setSubmitted(false);
+    };
+
     // Handling the form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (name === '' || email === '' || password === '') {
+        if (userNickname === '' || userEmail === '' || password === '') {
             setError(true);
+        } else if (password !== password2) {
+            setPasswordError(true);
         } else {
+            const user = {userNickname,userEmail,password};
+            fetch("http://localhost:8080/users/register",{
+                method: 'POST',
+                headers:{"Content-Type":"application/json"},
+                 body:JSON.stringify(user)
+                 }).then(()=> {
+                console.log("User added");
+                console.log(user);
+            });
             setSubmitted(true);
             setError(false);
+            setPasswordError(false);
         }
     };
 
@@ -48,7 +67,7 @@ const Registration = () => {
                 style={{
                     display: submitted ? '' : 'none',
                 }}>
-                <h1>User {name} successfully registered!!</h1>
+                <h1>User {userNickname} successfully registered!!</h1>
             </div>
         );
     };
@@ -66,6 +85,18 @@ const Registration = () => {
         );
     };
 
+    const errorMessage2 = () => {
+        return (
+            <div
+                className="error"
+                style={{
+                    display: passwordError ? '' : 'none',
+                }}>
+                <h1>Both passwords must be the same</h1>
+            </div>
+        );
+    };
+
     return (
         <div className="form">
             <div>
@@ -75,6 +106,7 @@ const Registration = () => {
             {/* Calling to the methods */}
             <div className="messages">
                 {errorMessage()}
+                {errorMessage2()}
                 {successMessage()}
             </div>
 
@@ -82,15 +114,20 @@ const Registration = () => {
                 {/* Labels and inputs for form data */}
                 <label className="label">Name</label>
                 <input onChange={handleName} className="input"
-                       value={name} type="text" />
+                       value={userNickname} type="text" />
 
                 <label className="label">Email</label>
                 <input onChange={handleEmail} className="input"
-                       value={email} type="email" />
+                       value={userEmail} type="email" />
 
                 <label className="label">Password</label>
                 <input onChange={handlePassword} className="input"
                        value={password} type="password" />
+
+                <label className="label">Repeat Password</label>
+                <input onChange={handlePassword2} className="input"
+                       value={password2} type="password" />
+
 
                 <button onClick={handleSubmit} className="btn" type="submit">
                     Submit
@@ -99,6 +136,6 @@ const Registration = () => {
         </div>
     );
   }
-  
+
   export default Registration
   
