@@ -113,27 +113,35 @@ const Registration = () => {
             </div>
 
             <form>
-                {/* Labels and inputs for form data */}
-                <label className="label">Name</label>
-                <input onChange={handleName} className="input"
-                       value={userNickname} type="text" />
+                <div className="registration-input">
+                    <label className="label">Name</label>
+                    <input onChange={handleName} className="input"
+                           value={userNickname} type="text" />
+                </div>
 
-                <label className="label">Email</label>
-                <input onChange={handleEmail} className="input"
-                       value={userEmail} type="email" />
+                <div className="registration-input">
+                    <label className="label">Email</label>
+                    <input onChange={handleEmail} className="input"
+                           value={userEmail} type="email" />
+                </div>
 
-                <label className="label">Password</label>
-                <input onChange={handlePassword} className="input"
-                       value={password} type="password" />
+                <div className="registration-input">
+                    <label className="label">Password</label>
+                    <input onChange={handlePassword} className="input"
+                           value={password} type="password" />
+                </div>
 
-                <label className="label">Repeat Password</label>
-                <input onChange={handlePassword2} className="input"
-                       value={password2} type="password" />
+                <div className="registration-input">
+                    <label className="label">Repeat Password</label>
+                    <input onChange={handlePassword2} className="input"
+                           value={password2} type="password" />
+                </div>
 
-
-                <button onClick={handleSubmit} className="btn" type="submit">
-                    Submit
-                </button>
+                <div className="registration-input">
+                    <button onClick={handleSubmit} className="btn" type="submit">
+                        Submit
+                    </button>
+                </div>
             </form>
         </div>
     );
