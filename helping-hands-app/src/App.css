@@ -441,4 +441,9 @@ input{
     transform: scale(1.1);
 }
 
+.slot-button.disabled{
+    pointer-events: none;
+}
+
+
 

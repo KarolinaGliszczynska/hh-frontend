@@ -17,6 +17,7 @@ const JoinEventCard = ({ event }) => {
     const handleJoinClick = (event) => {
         fetchPostRequestToSlot(chosenSlot);
         changeJoinButtonText(event.target);
+        disableSlotButtons();
     }
 
     const fetchPostRequestToSlot = (slotId) => {
@@ -51,6 +52,11 @@ const JoinEventCard = ({ event }) => {
         joinButton.innerHTML = "Leave event"
     }
 
+    const disableSlotButtons = () => {
+        const slotButtons = document.querySelectorAll(".slot-button");
+        slotButtons.forEach(button => button.classList.add('disabled'));
+    }
+
     return (
         <div className='join-event-card'>
             <h5 className="card-header">Join event</h5>
@@ -75,7 +81,9 @@ const JoinEventCard = ({ event }) => {
                 : (<p>loading slots...</p>)}
             </div>
             <div className='button-row'>
-                <button className='join-button'  onClick={(event)=>handleJoinClick(event)}>Join</button>
+                <button
+                    className='join-button'
+                    onClick={(event)=>handleJoinClick(event)}>Join</button>
             </div>
         </div>
     )
