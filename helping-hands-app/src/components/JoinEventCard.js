@@ -7,7 +7,7 @@ const JoinEventCard = ({ event }) => {
 
     const handleSlotClick = (event) => {
         const clickedSlotId = event.target.getAttribute('slot-id');
-        console.log(clickedSlotId);
+        changeSlotColor(event.target);
         setChosenSlot(clickedSlotId);
     }
 
@@ -27,6 +27,11 @@ const JoinEventCard = ({ event }) => {
             .catch((err) => console.log(err));
     };
 
+    const changeSlotColor = (button) => {
+        button.classList.remove('inactive');
+        button.classList.add('active');
+    }
+
     return (
         <div className='join-event-card'>
             <h5 className="card-header">Join event</h5>
@@ -44,7 +49,7 @@ const JoinEventCard = ({ event }) => {
                 ? (event.eventSlots.map(slot =>
                       <button
                           slot-id={slot.slotId}
-                          className={ 'slot-button-inactive' }
+                          className={ 'slot-button inactive' }
                           onClick={(event)=>handleSlotClick(event)}>
                       {slot.slotStartTime}
                       </button>))

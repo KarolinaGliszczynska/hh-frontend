@@ -418,9 +418,7 @@ input{
     align-items: center;
 }
 
-.slot-button-active {
-    background-color:  #6F7D50;
-    color: white;
+.slot-button {
     border-radius: 12px;
     font-size: 16px;
     padding: 5px 5px;
@@ -428,15 +426,15 @@ input{
     cursor: pointer;
 }
 
-.slot-button-inactive {
+.slot-button.inactive {
     background-color: white;
     color: black;
-    border-radius: 12px;
-    font-size: 16px;
-    padding: 5px 5px;
-    margin: 10px;
-    cursor: pointer;
+}
 
+.slot-button.active {
+    background-color:  #6F7D50;
+    color: white;
+    border-color: #6F7D50;
 }
 
 .slot-button:hover{
