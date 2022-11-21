@@ -2,12 +2,18 @@ import React, {useState} from 'react'
 import Calendar from "./Calendar";
 
 const JoinEventCard = ({ event }) => {
-    console.log(event.eventSlots);
 
-    const handleClick = (event) => {
+    const[chosenSlot, setChosenSlot] = useState(null);
+
+    const handleSlotClick = (event) => {
         const clickedSlotId = event.target.getAttribute('slot-id');
         console.log(clickedSlotId);
-        fecthPostRequestToSlot(clickedSlotId);
+        setChosenSlot(clickedSlotId);
+    }
+
+
+    const handleJoinClick = (event) => {
+        fecthPostRequestToSlot(chosenSlot);
     }
 
     const fecthPostRequestToSlot = (slotId) => {
@@ -36,13 +42,16 @@ const JoinEventCard = ({ event }) => {
             <div className='slot-buttons-container'>
               {event.eventSlots
                 ? (event.eventSlots.map(slot =>
-                      <button className='slot-button' slot-id={slot.slotId} onClick={(event)=>handleClick(event)}>
+                      <button
+                          slot-id={slot.slotId}
+                          className={ 'slot-button-inactive' }
+                          onClick={(event)=>handleSlotClick(event)}>
                       {slot.slotStartTime}
                       </button>))
                 : (<p>loading slots...</p>)}
             </div>
             <div className='button-row'>
-                <button className='join-button'>Join</button>
+                <button className='join-button'  onClick={(event)=>handleJoinClick(event)}>Join</button>
             </div>
         </div>
     )
