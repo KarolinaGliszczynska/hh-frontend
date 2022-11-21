@@ -14,8 +14,9 @@ const JoinEventCard = ({ event }) => {
         previousChoice.current = event.target;
     }
 
-    const handleJoinClick = () => {
+    const handleJoinClick = (event) => {
         fetchPostRequestToSlot(chosenSlot);
+        changeJoinButtonText(event.target);
     }
 
     const fetchPostRequestToSlot = (slotId) => {
@@ -44,6 +45,10 @@ const JoinEventCard = ({ event }) => {
             changeSlotColorToWhite(previousChoice.current);
             previousChoice.current = null;
         }
+    }
+
+    const changeJoinButtonText = (joinButton) => {
+        joinButton.innerHTML = "Leave event"
     }
 
     return (
