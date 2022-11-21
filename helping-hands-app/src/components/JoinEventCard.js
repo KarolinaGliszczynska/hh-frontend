@@ -1,22 +1,24 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import Calendar from "./Calendar";
 
 const JoinEventCard = ({ event }) => {
 
     const[chosenSlot, setChosenSlot] = useState(null);
+    const previousChoice = useRef(null);
 
     const handleSlotClick = (event) => {
+        undoPreviousSelection();
         const clickedSlotId = event.target.getAttribute('slot-id');
-        changeSlotColor(event.target);
+        changeSlotColorToGreen(event.target);
         setChosenSlot(clickedSlotId);
+        previousChoice.current = event.target;
     }
 
-
-    const handleJoinClick = (event) => {
-        fecthPostRequestToSlot(chosenSlot);
+    const handleJoinClick = () => {
+        fetchPostRequestToSlot(chosenSlot);
     }
 
-    const fecthPostRequestToSlot = (slotId) => {
+    const fetchPostRequestToSlot = (slotId) => {
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Length': 0},
@@ -27,9 +29,21 @@ const JoinEventCard = ({ event }) => {
             .catch((err) => console.log(err));
     };
 
-    const changeSlotColor = (button) => {
+    const changeSlotColorToGreen = (button) => {
         button.classList.remove('inactive');
         button.classList.add('active');
+    }
+
+    const changeSlotColorToWhite = (button) => {
+        button.classList.remove('active');
+        button.classList.add('inactive');
+    }
+
+    const undoPreviousSelection = () => {
+        if(previousChoice.current){
+            changeSlotColorToWhite(previousChoice.current);
+            previousChoice.current = null;
+        }
     }
 
     return (
