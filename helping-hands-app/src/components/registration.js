@@ -51,9 +51,8 @@ const Registration = () => {
                 method: 'POST',
                 headers:{"Content-Type":"application/json"},
                  body:JSON.stringify(user)
-                 }).then(()=> {
-                console.log("User added");
-                console.log(user);
+                 }).then((res)=> {
+                res.text().then((s) => console.log(s));
             });
             setSubmitted(true);
             setError(false);
