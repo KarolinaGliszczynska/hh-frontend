@@ -9,7 +9,8 @@ const Event = ({ event }) => {
       return (
         <div>
           <h6 className="event-card-category">{event.eventCategory}</h6>
-             <   img className='event-card-pic' src={pic} alt="event-pic" />
+             <   img className='event-card-pic'
+                     src={pic} alt="event-pic" />
           <div className='event-card-details row'>
                 <div id='col1'  className='column'>
                  <p>{year}</p>
