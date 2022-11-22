@@ -4,8 +4,7 @@ import React, {useEffect, useRef, useState} from 'react';
 
 const EventDetailCard = ({ event }) => {
 
-    const picture = useRef(pic);
-
+    /*
     useEffect(
         console.log("uploading picture"), []
     )
@@ -15,12 +14,20 @@ const EventDetailCard = ({ event }) => {
         picture.current = "data:image/png;base64," + event.image
     }
 
+     */
+    const picture = "data:image/png;base64," + event.image
+
     return (
         <div className='event-detail-card'>
             <h5 > {event.city}</h5>
             <h1> {event.eventTitle} </h1>
-            <   img className='event-card-pic'
-                    src={picture} alt="event-pic" />
+            <div>
+                { picture
+                  ? <img className='event-pic-large' src={picture} alt="event-pic" />
+                  : <img className='event-pic-large' src={pic} alt="event-pic" />
+                }
+
+            </div>
             <p> {event.eventDescription}</p>
         </div>
     )
