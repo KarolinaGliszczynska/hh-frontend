@@ -5,6 +5,7 @@ const JoinEventCard = ({ event }) => {
 
     const[chosenSlot, setChosenSlot] = useState(null);
     const previousChoice = useRef(null);
+    const [signedUp, setSignedUp] = useState(false);
 
     const handleSlotClick = (event) => {
         undoPreviousSelection();
@@ -14,15 +15,33 @@ const JoinEventCard = ({ event }) => {
         previousChoice.current = event.target;
     }
 
-    const handleJoinClick = (event) => {
+    const handleJoinClick = () => {
         fetchPostRequestToSlot(chosenSlot);
-        changeJoinButtonText(event.target);
         disableSlotButtons();
+        setSignedUp(true);
+    }
+
+    const handleLeaveEventClick = () => {
+        fetchDeleteRequestToSlot(chosenSlot);
+        activateSlotButtons();
+        undoPreviousSelection();
+        setSignedUp(false);
     }
 
     const fetchPostRequestToSlot = (slotId) => {
         const requestOptions = {
             method: 'POST',
+            headers: {'Content-Length': 0},
+        };
+        fetch(`http://localhost:8080/users/assign/${slotId}`, requestOptions)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch((err) => console.log(err));
+    };
+
+    const fetchDeleteRequestToSlot = (slotId) => {
+        const requestOptions = {
+            method: 'DELETE',
             headers: {'Content-Length': 0},
         };
         fetch(`http://localhost:8080/users/assign/${slotId}`, requestOptions)
@@ -48,13 +67,14 @@ const JoinEventCard = ({ event }) => {
         }
     }
 
-    const changeJoinButtonText = (joinButton) => {
-        joinButton.innerHTML = "Leave event"
-    }
-
     const disableSlotButtons = () => {
         const slotButtons = document.querySelectorAll(".slot-button");
         slotButtons.forEach(button => button.classList.add('disabled'));
+    }
+
+    const activateSlotButtons = () => {
+        const slotButtons = document.querySelectorAll(".slot-button");
+        slotButtons.forEach(button => button.classList.remove('disabled'));
     }
 
     return (
@@ -81,9 +101,10 @@ const JoinEventCard = ({ event }) => {
                 : (<p>loading slots...</p>)}
             </div>
             <div className='button-row'>
-                <button
-                    className='join-button'
-                    onClick={(event)=>handleJoinClick(event)}>Join</button>
+                { !signedUp
+                ? (<button className='join-button' onClick={(event)=>handleJoinClick(event)}>Join</button>)
+                : (<button className='join-button' onClick={(event)=>handleLeaveEventClick(event)}>Leave event</button>)
+                }
             </div>
         </div>
     )
