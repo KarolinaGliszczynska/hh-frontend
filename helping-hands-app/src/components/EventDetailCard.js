@@ -1,9 +1,19 @@
 import pic from "./AllEvents/eventpic.jpg";
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 
 const EventDetailCard = ({ event }) => {
-    const picture = "data:image/png;base64," + event.image;
+
+    const picture = useRef(pic);
+
+    useEffect(
+        console.log("uploading picture"), []
+    )
+
+    const uploadPicture = () => {
+        if(event.image)
+        picture.current = "data:image/png;base64," + event.image
+    }
 
     return (
         <div className='event-detail-card'>
