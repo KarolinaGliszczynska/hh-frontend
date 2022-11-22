@@ -2,30 +2,24 @@ import { useState } from 'react';
 
 const Registration = () => {
 
-    // States for registration
     const [userNickname, setUserNickname] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
-
-    // States for checking the errors
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
 
-    // Handling the name change
     const handleName = (e) => {
         setUserNickname(e.target.value);
         setSubmitted(false);
     };
 
-    // Handling the email change
     const handleEmail = (e) => {
         setUserEmail(e.target.value);
         setSubmitted(false);
     };
 
-    // Handling the password change
     const handlePassword = (e) => {
         setPassword(e.target.value);
         setSubmitted(false);
@@ -36,7 +30,6 @@ const Registration = () => {
         setSubmitted(false);
     };
 
-    // Handling the form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         if (userNickname === '' || userEmail === '' || password === '') {
@@ -51,9 +44,8 @@ const Registration = () => {
                 method: 'POST',
                 headers:{"Content-Type":"application/json"},
                  body:JSON.stringify(user)
-                 }).then(()=> {
-                console.log("User added");
-                console.log(user);
+                 }).then((res)=> {
+                res.text().then((s) => console.log(s));
             });
             setSubmitted(true);
             setError(false);
@@ -61,7 +53,6 @@ const Registration = () => {
         }
     };
 
-    // Showing success message
     const successMessage = () => {
         return (
             <div
@@ -74,7 +65,6 @@ const Registration = () => {
         );
     };
 
-    // Showing error message if error is true
     const errorMessage = () => {
         return (
             <div
