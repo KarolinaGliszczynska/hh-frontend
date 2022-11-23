@@ -5,16 +5,13 @@ const Event = ({ event }) => {
     const [year, month, day] = event.dateOfEvent.split('-')
     const monthNames = ["JUN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
     const monthName = monthNames[month-1]
-    const picture = null
+    const picture = event.image ? "data:image/png;base64," + event.image : pic;
 
       return (
         <div>
           <h6 className="event-card-category">{event.eventCategory}</h6>
           <div>
-            { picture
-                ? <img className='event-card-pic' src={picture} alt="event-pic" />
-                : <img className='event-card-pic' src={pic} alt="event-pic" />
-            }
+              <img className='event-card-pic' src={picture} alt="event-pic" />
           </div>
             <div className='event-card-details row'>
                 <div id='col1'  className='column'>

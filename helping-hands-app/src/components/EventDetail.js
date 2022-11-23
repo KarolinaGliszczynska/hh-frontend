@@ -18,7 +18,6 @@ const EventDetail = ({match}) => {
             })
             .then(data => {
                 setEvent(data);
-                console.log(data);
             })
             .catch((err) => console.log(err));
     };

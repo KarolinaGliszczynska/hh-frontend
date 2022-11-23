@@ -4,17 +4,6 @@ import React, {useEffect, useRef, useState} from 'react';
 
 const EventDetailCard = ({ event }) => {
 
-    /*
-    useEffect(
-        console.log("uploading picture"), []
-    )
-
-    const uploadPicture = () => {
-        if(event.image)
-        picture.current = "data:image/png;base64," + event.image
-    }
-
-     */
     const picture = event.image ? "data:image/png;base64," + event.image : pic;
 
     return (

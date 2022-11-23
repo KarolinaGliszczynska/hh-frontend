@@ -59,21 +59,25 @@ const App = () => {
                   clickedEvent = {clickedEvent}
               />
             </Route>
+
             <Route path = "/eventDetails/:id">
               <EventDetail
                   component = {clickedEvent}
-                  //we need a function the fetches the corrrect event based on which event card was clicked
               />
             </Route>
+
             <Route path = "/login">
               <Login />
             </Route>
+
             <Route path = "/registration">
               <Registration />
             </Route>
+
             <Route path = "/contact">
               <Contact />
             </Route>
+
           </Switch>  
         </div>
       </div>
