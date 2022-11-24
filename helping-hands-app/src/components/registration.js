@@ -8,7 +8,7 @@ const Registration = () => {
     const [password2, setPassword2] = useState('');
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
+    const [errorMessageText, setErrorMessageText] = useState('');
 
     const handleName = (e) => {
         setUserNickname(e.target.value);
@@ -34,10 +34,10 @@ const Registration = () => {
         e.preventDefault();
         if (userNickname === '' || userEmail === '' || password === '') {
             setError(true);
-            setPasswordError(false);
+            setErrorMessageText("Please fill all the fields")
         } else if (password !== password2) {
-            setPasswordError(true);
-            setError(false);
+            setError(true);
+            setErrorMessageText("Both passwords must be the same")
         } else {
             const user = {userNickname,userEmail,password};
             fetch("http://localhost:8080/users/register",{
@@ -45,13 +45,24 @@ const Registration = () => {
                 headers:{"Content-Type":"application/json"},
                  body:JSON.stringify(user)
                  }).then((res)=> {
-                res.text().then((s) => console.log(s));
+                    handleResponseFromServer(res);
             });
-            setSubmitted(true);
-            setError(false);
-            setPasswordError(false);
         }
     };
+
+    const handleResponseFromServer = (res) => {
+        console.log(res)
+        if (res.status === 200){
+            setSubmitted(true);
+            setError(false);
+        } else if (res.status === 400){
+            setError(true);
+            res.text().then((s) => setErrorMessageText(s));
+        } else {
+            setError(true);
+            setErrorMessageText("Something went wrong...")
+        }
+    }
 
     const successMessage = () => {
         return (
@@ -72,19 +83,7 @@ const Registration = () => {
                 style={{
                     display: error ? '' : 'none',
                 }}>
-                <h1>Please enter all the fields</h1>
-            </div>
-        );
-    };
-
-    const errorMessage2 = () => {
-        return (
-            <div
-                className="error"
-                style={{
-                    display: passwordError ? '' : 'none',
-                }}>
-                <h1>Both passwords must be the same</h1>
+                <h1>{errorMessageText}</h1>
             </div>
         );
     };
@@ -98,7 +97,6 @@ const Registration = () => {
             {/* Calling to the methods */}
             <div className="messages">
                 {errorMessage()}
-                {errorMessage2()}
                 {successMessage()}
             </div>
 
