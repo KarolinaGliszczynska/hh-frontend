@@ -7,6 +7,12 @@ const JoinEventCard = ({ event }) => {
     const previousChoice = useRef(null);
     const [signedUp, setSignedUp] = useState(false);
 
+    const getHourFromSlotStrtTime = (slot) => {
+        const slotStartHour = slot.slotStartTime.split('T')[1].split(':')[0];
+        const slotStartMinutes = slot.slotStartTime.split('T')[1].split(':')[1];
+        return `${slotStartHour} : ${slotStartMinutes}`
+    }
+
     const handleSlotClick = (event) => {
         undoPreviousSelection();
         const clickedSlotId = event.target.getAttribute('slot-id');
@@ -96,7 +102,7 @@ const JoinEventCard = ({ event }) => {
                           slot-id={slot.slotId}
                           className={ 'slot-button inactive' }
                           onClick={(event)=>handleSlotClick(event)}>
-                      {slot.slotStartTime}
+                      { getHourFromSlotStrtTime(slot) }
                       </button>))
                 : (<p>loading slots...</p>)}
             </div>
