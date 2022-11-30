@@ -8,6 +8,7 @@ import Registration from './components/registration'
 import Contact from './components/contact'
 import './App.css'
 import EventDetail from './components/EventDetail'
+import NewEvent from "./components/AllEvents/NewEvent";
 
 const App = () => {
 
@@ -58,6 +59,10 @@ const App = () => {
                   handleCardClick = {handleCardClick}
                   clickedEvent = {clickedEvent}
               />
+            </Route>
+
+            <Route path="/newEvent">
+              < NewEvent />
             </Route>
 
             <Route path = "/eventDetails/:id">
