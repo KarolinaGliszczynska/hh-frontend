@@ -20,7 +20,7 @@ const Event = ({ event }) => {
                     <p>{monthName}</p>
 
                     </div>
-              <div id='col2' className='column'>
+              <div id='col2' className='column'><p>{event.city}</p>
                 <h4>
                 {event.eventTitle}{' '}
                 </h4>
