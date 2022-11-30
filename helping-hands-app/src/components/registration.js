@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import pic from './register-pic.jpg'
+import { Link } from "react-router-dom"
+import googleLogo from './google-icon.png'
 
 const Registration = () => {
 
@@ -71,7 +74,7 @@ const Registration = () => {
                 style={{
                     display: submitted ? '' : 'none',
                 }}>
-                <h1>User {userNickname} successfully registered!!</h1>
+                <h6>User {userNickname} successfully registered!!</h6>
             </div>
         );
     };
@@ -83,55 +86,85 @@ const Registration = () => {
                 style={{
                     display: error ? '' : 'none',
                 }}>
-                <h1>{errorMessageText}</h1>
+                <h6>{errorMessageText}</h6>
             </div>
         );
     };
 
     return (
-        <div className="form">
-            <div>
-                <h1>User Registration</h1>
+    <div className="row">
+        <div className="col">
+            <div className='register-pic' src={pic} >
+
+
+                      <div className='register-title'>
+                                <h1 >User Registration</h1>
+                                <p >Join our community</p>
+                      </div>
+
             </div>
-
-            {/* Calling to the methods */}
-            <div className="messages">
-                {errorMessage()}
-                {successMessage()}
-            </div>
-
-            <form>
-                <div className="registration-input">
-                    <label className="label">Name</label>
-                    <input onChange={handleName} className="input"
-                           value={userNickname} type="text" />
-                </div>
-
-                <div className="registration-input">
-                    <label className="label">Email</label>
-                    <input onChange={handleEmail} className="input"
-                           value={userEmail} type="email" />
-                </div>
-
-                <div className="registration-input">
-                    <label className="label">Password</label>
-                    <input onChange={handlePassword} className="input"
-                           value={password} type="password" />
-                </div>
-
-                <div className="registration-input">
-                    <label className="label">Repeat Password</label>
-                    <input onChange={handlePassword2} className="input"
-                           value={password2} type="password" />
-                </div>
-
-                <div className="registration-input">
-                    <button onClick={handleSubmit} className="btn" type="submit">
-                        Submit
-                    </button>
-                </div>
-            </form>
         </div>
+        <div className="col">
+
+<div className='login-register-top'>
+            <h5 >Welcome to HelpingHands!</h5>
+            <div className='login-register-switch'>
+                <Link className="switch-non-active" to="/login">Login</Link>
+                <span className="switch-active" to="/events">Register</span>
+            </div>
+</div>
+
+           <div className="form">
+
+
+                {/* Calling to the methods */}
+                <div className="messages">
+                    {errorMessage()}
+                    {successMessage()}
+                </div>
+
+                <form>
+                    <div className="registration-input">
+                        <label className="label">Name</label>
+                        <input onChange={handleName} className="input"
+                               value={userNickname} type="text" />
+                    </div>
+
+                    <div className="registration-input">
+                        <label className="label">Email</label>
+                        <input onChange={handleEmail} className="input"
+                               value={userEmail} type="email" />
+                    </div>
+
+                    <div className="registration-input">
+                        <label className="label">Password</label>
+                        <input onChange={handlePassword} className="input"
+                               value={password} type="password" />
+                    </div>
+
+                    <div className="registration-input">
+                        <label className="label">Repeat Password</label>
+                        <input onChange={handlePassword2} className="input"
+                               value={password2} type="password" />
+                    </div>
+
+            <div className='registration-buttons'>
+
+<div className='form-button'>
+                        <button  onClick={handleSubmit} className="btn" type="submit">
+                            Submit
+                        </button>
+                        </div>
+<div className='google-register'>
+                        <button  onClick={handleSubmit} className="btn" type="submit">
+                                                    <   img className='logo-icon' src={googleLogo} alt="logo" />Register with Google
+                                                </button>
+                                               </div>
+</div>
+                </form>
+            </div>
+          </div>
+      </div>
     );
   }
 

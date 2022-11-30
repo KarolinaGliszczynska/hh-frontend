@@ -80,36 +80,30 @@ a:hover { text-decoration: none;
 /* buttons, text fields ----------------------------------------------------------*/
 
 input{
+
     width: 100%;
-    padding: 5%;
+    max-width: 4000px;
+    padding: 10px 43px ;
     background: #EDECE6;
     border: 1px solid #6F7D50;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
     border-radius: 40px;
 }
+
 
 .registration-input label,input{
     display:flex;
     flex-direction:column;
+    margin-top: 10px;
 }
 
 
 .registration-input input {
-    width: 50%;
-    height: 20px;
+    margin: 10px auto 10px auto;
+    width: 100%;
 
-    background: #EDECE6;
-    border: 1px solid #6F7D50;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    margin-bottom: 10px;
 }
 
-.registration-input button {
-    color: white;
-    background-color: #5A6B3A;
-    margin-top: 30px;
-}
 
 
 .btn-light{
@@ -141,16 +135,17 @@ input{
     text-decoration: none;
 }
 
-.form {
-    margin-top:80px;
-    margin-left: 40px;
+button{
+    align-self: end;
+    padding: 10px 43px ;
+    border: 1px solid #5A6B3A;
+    border-radius: 36px;
+    opacity: 1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .message {
-    width: 50%;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
     padding: 10px 43px ;
     border: 1px solid #5A6B3A;
     border-radius: 36px;
@@ -160,11 +155,11 @@ input{
 }
 
 .success {
-    background: #CCD8A9;
+    background: var(--green-300);
 }
 
 .error {
-    background: lightpink;
+    background: var(--allert-400);
 }
 
 
@@ -263,6 +258,7 @@ input{
     align-items: center;
     justify-content: center;
     margin: 0;
+    flex-wrap: wrap;
 }
 
 .column {
@@ -513,4 +509,95 @@ input{
 }
 
 
+/*-----------REGISTER---------------*/
+.register-pic {
+    border-radius: 29px;
+    background: url(components/register-pic.jpg) no-repeat center center ;
+    margin-top: 70px;
+    margin-left: 3%;
+    background-size: cover;
+    height:100%;
+}
 
+.register-title{
+    padding:90% 5% 5% 5%;
+    color: var(--neutral-25);
+}
+
+.login-register-top{
+    margin-top: 150px;
+    margin-bottom: 10%;
+   text-align: center;
+
+}
+
+.login-register-switch{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin: auto;
+    width: 250px;
+    background: #EDECE6;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 33px;
+}
+.switch-non-active{
+    padding: 12px 20px;
+
+}
+
+.switch-active{
+    width: 50%;
+    justify-content: center;
+    align-self: end;
+    margin: 5px;
+    padding: 8px 20px;
+    gap: 7px;
+    color: var(--neutral-25);
+    background: #5A6B3A;
+    border-radius: 36px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.form {
+    margin: 20px auto;
+   max-width: 350px;
+}
+
+
+.form-button button{
+    align-self: end;
+    color: white;
+    background-color: #5A6B3A;
+    margin-top: 30px;
+    border: 1px solid #5A6B3A;
+    border-radius: 36px;
+    opacity: 1;
+    width: 250px;
+    padding: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.registration-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    flex-wrap: wrap;
+
+}
+.google-register button{
+    font-weight: bold;
+    width: 250px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    background: #F6F5F2;
+    border: 1px solid #5A6B3A;
+    border-radius: 36px;
+}
