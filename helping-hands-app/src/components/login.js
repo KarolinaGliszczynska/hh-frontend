@@ -41,7 +41,7 @@ const Login = () => {
     };
 
     const handleResponseFromServer = (res) => {
-        console.log(res)
+        console.log(res);
         if (res.status === 200){
             setSubmitted(true);
             setError(false);
@@ -85,8 +85,8 @@ const Login = () => {
 
 
                     <div className='register-title'>
-                        <h1 >User Registration</h1>
-                        <p >Join our community</p>
+                        <h1 >User Login</h1>
+                        <p >Log into your HelpingHands account</p>
                     </div>
 
                 </div>
@@ -132,7 +132,7 @@ const Login = () => {
                             </div>
                             <div className='google-register'>
                                 <button  onClick={handleSubmit} className="btn" type="submit">
-                                    <   img className='logo-icon' src={googleLogo} alt="logo" />Register with Google
+                                    <   img className='logo-icon' src={googleLogo} alt="logo" />Login with Google
                                 </button>
                             </div>
                         </div>
