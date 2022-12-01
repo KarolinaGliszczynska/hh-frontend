@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import pic from './register-pic.jpg'
-import { Link } from "react-router-dom"
-import googleLogo from './google-icon.png'
+import pic from './register-pic.jpg';
+import { Link } from "react-router-dom";
+import googleLogo from './google-icon.png';
+import axios from "axios";
 
 const Login = () => {
 
