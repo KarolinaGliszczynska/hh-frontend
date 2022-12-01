@@ -12,6 +12,12 @@ const NewEvent = () => {
             }
             Loaded = true;
 
+
+            document.querySelector(".events-add button[type=submit]").onclick = function() {
+
+            };
+
+
             document.querySelectorAll(".upload_container").forEach(function (container) {
                 let clear = document.createElement("button");
                 clear.style.visibility = 'hidden';
@@ -93,7 +99,6 @@ const NewEvent = () => {
     }
 
     return (<>
-        <form method="post">
         <div className='events-main-container events-add'>
             <h1>Add/edit event</h1>
 
@@ -142,7 +147,6 @@ const NewEvent = () => {
                 <li><button type='submit'>Create Event</button></li>
             </ul>
         </div>
-        </form>
         </>)
 }
 

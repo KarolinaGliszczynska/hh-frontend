@@ -626,7 +626,7 @@ transform: scale(1.1);}
     text-align: center;
 }
 
-.slot_display button, .slot_add button {
+.slot_display button, .slot_add button, .events-add button[type=submit] {
     padding: 5px;
     text-align: center;
     white-space: nowrap;
