@@ -692,3 +692,15 @@ transform: scale(1.1);}
 .invisible {
     visibility: hidden;
 }
+
+.upload_container button {
+    background: none;
+    border: none;
+    color: red;
+    font-weight: bolder;
+    width: auto;
+    max-width: auto;
+    box-shadow: none;
+    padding: 10px 20px;
+    visibility: hidden;
+}
