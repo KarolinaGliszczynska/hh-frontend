@@ -12,15 +12,22 @@ const NewEvent = () => {
             }
             Loaded = true;
 
-            let file_upload = document.querySelector(".upload_container").querySelector("input");
-            file_upload.onchange = function() {
-                let btn = file_upload.parentNode.parentNode.querySelector("button");
-                btn.style.visibility = file_upload.value == "" ? "hidden" : "visible";
-                btn.onclick = function() {
-                    file_upload.value = '';
-                    file_upload.onchange();
+            document.querySelectorAll(".upload_container").forEach(function (container) {
+                let clear = document.createElement("button");
+                clear.style.visibility = 'hidden';
+                clear.innerHTML = "x";
+                container.appendChild(clear);
+
+                let file_upload = container.querySelector("input");
+                file_upload.onchange = function() {
+                    let btn = file_upload.parentNode.parentNode.querySelector("button");
+                    btn.style.visibility = file_upload.value == "" ? "hidden" : "visible";
+                    btn.onclick = function() {
+                        file_upload.value = '';
+                        file_upload.onchange();
+                    };
                 };
-            }
+            });
         }
 
         if (document.readyState === 'complete') {
@@ -83,14 +90,10 @@ const NewEvent = () => {
         });
         newNode.classList.remove("invisible");
         source.parentNode.appendChild(newNode);
-
-
-
-
-
     }
 
     return (<>
+        <form method="post">
         <div className='events-main-container events-add'>
             <h1>Add/edit event</h1>
 
@@ -113,7 +116,6 @@ const NewEvent = () => {
 
             <div class='upload_container'>
                 <label>Featured image; files up to 512MB; formats png, img, jpg<input type="file" id="myFile" name="filename"/></label>
-                <button type='button'>x</button>
             </div>
 
 
@@ -133,9 +135,14 @@ const NewEvent = () => {
                 <button type="button" onClick={addSlot}>X</button>
             </div>
 
-                <label>Event files, only files up to 512MB; formats pdf, doc, txt<input type="file" id="myFile" name="filename"/></label>
+                <div className='upload_container'>
+                <label>Event files, only files up to 512MB; formats pdf, doc, txt<input type="file" id="myFile" name="filename" multiple="true"/></label>
+                </div>
+
+                <li><button type='submit'>Create Event</button></li>
             </ul>
         </div>
+        </form>
         </>)
 }
 
