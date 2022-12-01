@@ -98,7 +98,7 @@ const JoinEventCard = ({ event }) => {
             </div>
 
 
-            <div>
+            <div className='slot-title'>
                 <h4>Pick a time slot</h4>
             </div>
             <div className='slot-buttons-container'>
