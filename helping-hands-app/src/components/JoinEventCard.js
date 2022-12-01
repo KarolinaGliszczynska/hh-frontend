@@ -84,6 +84,7 @@ const JoinEventCard = ({ event }) => {
     }
 
     return (
+    <div className='event-detail-col-2'>
         <div className='join-event-card'>
             <h5 className="card-header">Join event</h5>
 
@@ -112,7 +113,7 @@ const JoinEventCard = ({ event }) => {
                 : (<button className='join-button' onClick={(event)=>handleLeaveEventClick(event)}>Leave event</button>)
                 }
             </div>
-        </div>
+        </div></div>
     )
 }
 

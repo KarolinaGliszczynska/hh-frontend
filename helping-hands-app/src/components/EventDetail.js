@@ -24,7 +24,7 @@ const EventDetail = ({match}) => {
 
       return (
         <>
-            <div>
+            <div className='event-detail-box row' >
                 < EventDetailCard event = {event} />
                 < JoinEventCard event = {event} />
             </div>
