@@ -31,7 +31,7 @@ const Homepage = () => {
                             <div className='column'>
                                 <div className="home-call-1">
                                     <h5 className="thin-header">Create event</h5>
-                                       <Link className="btn-link" to="/events"><button className='btn-light'>Create</button></Link>
+                                       <Link className="btn-link" to="/newEvent"><button className='btn-light'>Create</button></Link>
 
                                 </div>
                             </div>

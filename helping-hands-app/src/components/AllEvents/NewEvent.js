@@ -1,8 +1,39 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 
+let Loaded = false;
 const NewEvent = () => {
+
+    useEffect(()=> {
+        const onPageLoad = () => {
+            if (Loaded) {
+                return;
+            }
+            Loaded = true;
+
+            let file_upload = document.querySelector(".upload_container").querySelector("input");
+            file_upload.onchange = function() {
+                let btn = file_upload.parentNode.parentNode.querySelector("button");
+                btn.style.visibility = file_upload.value == "" ? "hidden" : "visible";
+                btn.onclick = function() {
+                    file_upload.value = '';
+                    file_upload.onchange();
+                };
+            }
+        }
+
+        if (document.readyState === 'complete') {
+            onPageLoad();
+        } else {
+            // Remove the event listener when component unmounts
+            window.addEventListener('load', onPageLoad);
+            return () => window.removeEventListener('load', onPageLoad);
+        }
+
+    });
+
+
 
     function addSlot(e) {
         let ctrls = e.target.parentNode;
@@ -52,6 +83,11 @@ const NewEvent = () => {
         });
         newNode.classList.remove("invisible");
         source.parentNode.appendChild(newNode);
+
+
+
+
+
     }
 
     return (<>
@@ -75,7 +111,11 @@ const NewEvent = () => {
             <textarea placeholder="Enter event details"></textarea>
             </label></li>
 
-            <label>Files up to 512MB; formats png, img, jpg<input type="file" id="myFile" name="filename"/></label>
+            <div class='upload_container'>
+                <label>Featured image; files up to 512MB; formats png, img, jpg<input type="file" id="myFile" name="filename"/></label>
+                <button type='button'>x</button>
+            </div>
+
 
             <br/>
             <label>Event Slots</label><br/>
