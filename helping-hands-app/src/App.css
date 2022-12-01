@@ -616,10 +616,6 @@ transform: scale(1.1);}
     list-style-type: none;
 }
 
-.events-add .slot_add {
-    display: flex;
-}
-
 .events-add .slot_add input {
     padding: 5px;
     text-align: center;
@@ -640,6 +636,16 @@ transform: scale(1.1);}
     border: 1px solid #6F7D50;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     border-radius: 40px;
+}
+
+.events-add .slot_add {
+    display: flex;
+
+}
+
+.slot_add button {
+   align-self: auto;
+   margin: 10px 5px 0 0;
 }
 
 
@@ -686,5 +692,3 @@ transform: scale(1.1);}
 .invisible {
     visibility: hidden;
 }
-
-
