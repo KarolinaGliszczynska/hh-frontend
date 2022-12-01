@@ -24,6 +24,7 @@ const App = () => {
   const fetchEvents = ()=>{
     fetch('http://localhost:8080/events')
         .then(res => {
+          console.log(res);
           return res.json();
         })
         .then(data => {

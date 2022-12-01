@@ -43,7 +43,7 @@ const Registration = () => {
             setErrorMessageText("Both passwords must be the same")
         } else {
             const user = {userNickname,userEmail,password};
-            fetch("http://localhost:8080/users/register",{
+            fetch("http://localhost:8080/api/auth/users/register",{
                 method: 'POST',
                 headers:{"Content-Type":"application/json"},
                  body:JSON.stringify(user)
