@@ -86,13 +86,18 @@ const JoinEventCard = ({ event }) => {
     return (
     <div className='event-detail-col-2'>
         <div className='join-event-card'>
-            <h5 className="card-header">Join event</h5>
+            <div className="event-card-category">
+                <h5 >Join event</h5>
+                </div>
 
-            <div className='calendar-display'>
+
+               <div className='calendar-display'>
                 { event ? < Calendar
                     event = {event}
                 /> : " "}
             </div>
+
+
             <div>
                 <h4>Pick a time slot</h4>
             </div>
