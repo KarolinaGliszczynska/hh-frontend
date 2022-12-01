@@ -84,17 +84,19 @@ const JoinEventCard = ({ event }) => {
     }
 
     return (
-        <div className='join-event-card'>
-            <h5 className="card-header">Join event</h5>
+        <div className='event-detail-col-2'>
+            <div className='join-event-card'>
+                <h5 className="event-card-category">Join event</h5>
 
-            <div className='calendar-display'>
-                { event ? < Calendar
-                    event = {event}
-                /> : " "}
-            </div>
-            <div>
-                <h4>Pick a time slot</h4>
-            </div>
+                <div className='calendar-display'>
+                    { event ? < Calendar
+                        event = {event}
+                    /> : " "}
+                </div>
+
+                <div className='slot-title'>
+                    <h4>Pick a time slot</h4>
+                </div>
             <div className='slot-buttons-container'>
               {event.eventSlots
                 ? (event.eventSlots.map(slot =>
@@ -106,11 +108,12 @@ const JoinEventCard = ({ event }) => {
                       </button>))
                 : (<p>loading slots...</p>)}
             </div>
-            <div className='button-row'>
-                { !signedUp
-                ? (<button className='join-button' onClick={(event)=>handleJoinClick(event)}>Join</button>)
-                : (<button className='join-button' onClick={(event)=>handleLeaveEventClick(event)}>Leave event</button>)
-                }
+                <div className='button-row'>
+                    { !signedUp
+                    ? (<button className='join-button' onClick={(event)=>handleJoinClick(event)}>Join</button>)
+                    : (<button className='join-button' onClick={(event)=>handleLeaveEventClick(event)}>Leave event</button>)
+                    }
+                </div>
             </div>
         </div>
     )
