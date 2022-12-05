@@ -30,15 +30,17 @@ const Login = () => {
             setError(true);
             setErrorMessageText("Please fill both fields")
         } else {
-            const user = {username,password};
-            fetch("http://localhost:8080/api/auth/signin",{
-                method: 'POST',
-                headers:{"Content-Type":"application/json"},
-                body:JSON.stringify(user)
-            }).then((res)=> {
-                handleResponseFromServer(res);
-            });
+          login(username,password);
         }
+    };
+
+    const login = (username, password) => {
+        return axios.post("http://localhost:8080/api/auth/signin", {
+            username,
+            password,
+        }).then((response) => {
+            handleResponseFromServer(res)
+        })
     };
 
     const handleResponseFromServer = (res) => {
@@ -46,6 +48,7 @@ const Login = () => {
         if (res.status === 200){
             setSubmitted(true);
             setError(false);
+            localStorage.setItem("user", JSON.stringify(response.data));
         } else if (res.status === 400){
             setError(true);
             res.text().then((s) => setErrorMessageText(s));
@@ -54,6 +57,15 @@ const Login = () => {
             setErrorMessageText("Something went wrong...")
         }
     }
+
+    const logout = () => {
+        localStorage.removeItem("user");
+        return axios.post("http://localhost:8080/api/auth/signin")
+            .then((response) => {
+                console.log(res);
+                return response.data;
+            });
+    };
 
     const successMessage = () => {
         return (

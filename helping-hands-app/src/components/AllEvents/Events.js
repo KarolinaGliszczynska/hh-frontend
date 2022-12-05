@@ -28,20 +28,16 @@ const Events = () => {
             })
     }
 
-    const changeCity = (city)=>{
-        setCity(city);
-        console.log(city);
-    }
-
-    const changeCategory = (category)=>{
-        setCategory(category);
-        console.log(category);
-    }
+    const wrapperSetEvents = useCallback(val => {
+        setParentState(val);
+    }, [setParentState]);
 
 
     return (
           <>
-            < Sidebar/>
+            < Sidebar
+                changeCity = {changeCity}
+            />
             <div className='events-main-container'>
                 < Header  />
 

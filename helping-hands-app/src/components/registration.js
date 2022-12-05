@@ -2,6 +2,7 @@ import { useState } from 'react';
 import pic from './register-pic.jpg'
 import { Link } from "react-router-dom"
 import googleLogo from './google-icon.png'
+import axios from "axios";
 
 const Registration = () => {
 
@@ -42,15 +43,18 @@ const Registration = () => {
             setError(true);
             setErrorMessageText("Both passwords must be the same")
         } else {
-            const user = {userNickname,userEmail,password};
-            fetch("http://localhost:8080/api/auth/users/register",{
-                method: 'POST',
-                headers:{"Content-Type":"application/json"},
-                 body:JSON.stringify(user)
-                 }).then((res)=> {
-                    handleResponseFromServer(res);
-            });
+            register(userNickname,userEmail,password);
         }
+    };
+
+    const register = (username, email, password) => {
+        return axios.post("http://localhost:8080/api/auth/users/register", {
+            username,
+            email,
+            password,
+        }).then((response) => {
+            handleResponseFromServer(res)
+        })
     };
 
     const handleResponseFromServer = (res) => {

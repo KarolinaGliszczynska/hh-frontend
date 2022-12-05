@@ -24,7 +24,7 @@ const Event = ({ event }) => {
                 <h4>
                 {event.eventTitle}{' '}
                 </h4>
-                 <p>{event.eventDescription}</p>
+                 <p>{event.eventDescription.substring(0,50) + "..."}</p>
               </div>
           </div>
         </div>

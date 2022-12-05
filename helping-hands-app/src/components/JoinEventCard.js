@@ -100,7 +100,7 @@ const JoinEventCard = ({ event }) => {
             <div className='slot-buttons-container'>
               {event.eventSlots
                 ? (event.eventSlots.map(slot =>
-                      <button
+                      <button key = {slot.slotId}
                           slot-id={slot.slotId}
                           className={ 'slot-button inactive' }
                           onClick={(event)=>handleSlotClick(event)}>
