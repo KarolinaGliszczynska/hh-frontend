@@ -106,29 +106,23 @@ const Registration = () => {
     <div className="row">
         <div className="col">
             <div className='register-pic' src={pic} >
-
-
-                      <div className='register-title'>
-                                <h1 >User Registration</h1>
-                                <p >Join our community</p>
-                      </div>
-
+                  <div className='register-title'>
+                      <h1 >User Registration</h1>
+                      <p >Join our community</p>
+                  </div>
             </div>
         </div>
+
         <div className="col">
-
-<div className='login-register-top'>
-            <h5 >Welcome to HelpingHands!</h5>
-            <div className='login-register-switch'>
-                <Link className="switch-non-active" to="/login">Login</Link>
-                <span className="switch-active">Register</span>
+            <div className='login-register-top'>
+                <h5 >Welcome to HelpingHands!</h5>
+                <div className='login-register-switch'>
+                    <Link className="switch-non-active" to="/login">Login</Link>
+                    <span className="switch-active">Register</span>
+                </div>
             </div>
-</div>
 
-           <div className="form">
-
-
-                {/* Calling to the methods */}
+            <div className="form">
                 <div className="messages">
                     {errorMessage()}
                     {successMessage()}
@@ -159,23 +153,22 @@ const Registration = () => {
                                value={password2} type="password" />
                     </div>
 
-            <div className='registration-buttons'>
-
-<div className='form-button'>
-                        <button  onClick={handleSubmit} className="btn" type="submit">
-                            Submit
-                        </button>
+                    <div className='registration-buttons'>
+                        <div className='form-button'>
+                            <button  onClick={handleSubmit} className="btn" type="submit">
+                                Submit
+                            </button>
                         </div>
-<div className='google-register'>
-                        <button  onClick={handleSubmit} className="btn" type="submit">
-                                                    <   img className='logo-icon' src={googleLogo} alt="logo" />Register with Google
-                                                </button>
-                                               </div>
-</div>
+                        <div className='google-register'>
+                            <button  onClick={handleSubmit} className="btn" type="submit">
+                                <img className='logo-icon' src={googleLogo} alt="logo" />Register with Google
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
-          </div>
-      </div>
+        </div>
+    </div>
     );
   }
 

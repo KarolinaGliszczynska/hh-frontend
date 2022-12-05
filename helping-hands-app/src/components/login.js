@@ -38,21 +38,27 @@ const Login = () => {
         return axios.post("http://localhost:8080/api/auth/signin", {
             username,
             password,
-        }).then((res) => {
-            handleResponseFromServer(res)
+        }).then((response) => {
+            handleResponseFromServer(response)
+        }).catch((error) => {
+            if (error. response) {
+                handleError(error.response);
+            }
         })
     };
 
     const handleResponseFromServer = (res) => {
-        console.log(res);
-        if (res.status === 200){
-            setSubmitted(true);
-            setError(false);
-            localStorage.setItem("user", JSON.stringify(res.data));
-        } else if (res.status === 400){
+        setSubmitted(true);
+        setError(false);
+    };
+
+    const handleError = (res) => {
+        if (res.status === 400){
+            setSubmitted(false);
             setError(true);
-            res.text().then((s) => setErrorMessageText(s));
-        } else {
+            setErrorMessageText(res.data);
+        } else if (res.status === 500){
+            setSubmitted(false);
             setError(true);
             setErrorMessageText("Something went wrong...")
         }
@@ -60,10 +66,9 @@ const Login = () => {
 
     const logout = () => {
         localStorage.removeItem("user");
-        return axios.post("http://localhost:8080/api/auth/signin")
+        return axios.post("http://localhost:8080/api/auth/signout")
             .then((res) => {
                 console.log(res);
-                return res.data;
             });
     };
 
