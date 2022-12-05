@@ -108,8 +108,8 @@ const Login = () => {
                 <div className='login-register-top'>
                     <h5 >Welcome to HelpingHands!</h5>
                     <div className='login-register-switch'>
-                        <Link className="switch-non-active" to="/login">Register</Link>
-                        <span className="switch-active" to="/events">Login</span>
+                        <span className="switch-active" to="/login">Login</span>
+                        <Link className="switch-non-active" to="/registration">Register</Link>
                     </div>
                 </div>
 

@@ -54,19 +54,25 @@ const Registration = () => {
             password,
         }).then((response) => {
             handleResponseFromServer(response)
+        }).catch((error) => {
+            if (error. response) {
+                handleError(error.response);
+            }
         })
     };
 
     const handleResponseFromServer = (res) => {
-        console.log(res)
-        if (res.status === 200){
-            setSubmitted(true);
-            setError(false);
-        } else if (res.status === 400){
+        setSubmitted(true);
+        setError(false);
+    };
+
+    const handleError = (res) => {
+        if (res.status === 400){
+            setSubmitted(false);
             setError(true);
             setErrorMessageText(res.data);
-            //res.text().then((s) => setErrorMessageText(s));
-        } else {
+        } else if (res.status === 500){
+            setSubmitted(false);
             setError(true);
             setErrorMessageText("Something went wrong...")
         }
@@ -115,7 +121,7 @@ const Registration = () => {
             <h5 >Welcome to HelpingHands!</h5>
             <div className='login-register-switch'>
                 <Link className="switch-non-active" to="/login">Login</Link>
-                <span className="switch-active" to="/events">Register</span>
+                <span className="switch-active">Register</span>
             </div>
 </div>
 
