@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useCallback} from 'react'
 import Event from './Event'
 import { Link } from 'react-router-dom'
 import Sidebar from "./Sidebar.js";
 import Header from "./Header";
+import axios from "axios";
 
 
 const Events = () => {
@@ -18,25 +19,22 @@ const Events = () => {
         [])
 
     const fetchEvents = ()=>{
-        fetch('http://localhost:8080/events')
+        return axios.get('http://localhost:8080/events')
             .then(res => {
-                return res.json();
-            })
-            .then(data => {
                 setIsPending(false);
-                setEvents(data);
+                setEvents(res.data);
             })
     }
 
-    const wrapperSetEvents = useCallback(val => {
-        setParentState(val);
-    }, [setParentState]);
+    const wrapperSetEvents = useCallback(city => {
+        setCity(city);
+    }, []);
 
 
     return (
           <>
             < Sidebar
-                changeCity = {changeCity}
+
             />
             <div className='events-main-container'>
                 < Header  />

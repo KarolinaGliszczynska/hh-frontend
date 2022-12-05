@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import React from "react";
 import {useState} from "react";
 
@@ -7,16 +6,12 @@ const Sidebar = ( {changeCity, changeCategory} ) => {
     const [city, setCity] = useState("");
     const [category, setCategory] = useState("");
 
-
-
     const handleFilter = () => {
-
+        console.log("Filter")
     }
 
     return (
         <nav className='sidenav'>
-
-
             <ul className='sidenav-items'>
                 <li className="sidenav-item ">
                     <h5 className="thin-header">Check who needs help in your area!</h5>

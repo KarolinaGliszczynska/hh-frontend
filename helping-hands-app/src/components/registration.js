@@ -53,7 +53,7 @@ const Registration = () => {
             email,
             password,
         }).then((response) => {
-            handleResponseFromServer(res)
+            handleResponseFromServer(response)
         })
     };
 

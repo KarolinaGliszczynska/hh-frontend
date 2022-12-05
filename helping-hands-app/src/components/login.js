@@ -38,7 +38,7 @@ const Login = () => {
         return axios.post("http://localhost:8080/api/auth/signin", {
             username,
             password,
-        }).then((response) => {
+        }).then((res) => {
             handleResponseFromServer(res)
         })
     };
@@ -48,7 +48,7 @@ const Login = () => {
         if (res.status === 200){
             setSubmitted(true);
             setError(false);
-            localStorage.setItem("user", JSON.stringify(response.data));
+            localStorage.setItem("user", JSON.stringify(res.data));
         } else if (res.status === 400){
             setError(true);
             res.text().then((s) => setErrorMessageText(s));
@@ -61,9 +61,9 @@ const Login = () => {
     const logout = () => {
         localStorage.removeItem("user");
         return axios.post("http://localhost:8080/api/auth/signin")
-            .then((response) => {
+            .then((res) => {
                 console.log(res);
-                return response.data;
+                return res.data;
             });
     };
 
@@ -101,11 +101,10 @@ const Login = () => {
                         <h1 >User Login</h1>
                         <p >Log into your HelpingHands account</p>
                     </div>
-
                 </div>
             </div>
-            <div className="col">
 
+            <div className="col">
                 <div className='login-register-top'>
                     <h5 >Welcome to HelpingHands!</h5>
                     <div className='login-register-switch'>
@@ -115,29 +114,22 @@ const Login = () => {
                 </div>
 
                 <div className="form">
-
-
-                    {/* Calling to the methods */}
                     <div className="messages">
                         {errorMessage()}
                         {successMessage()}
                     </div>
-
                     <form>
                         <div className="registration-input">
                             <label className="label">Name</label>
                             <input onChange={handleName} className="input"
                                    value={username} type="text" />
                         </div>
-
                         <div className="registration-input">
                             <label className="label">Password</label>
                             <input onChange={handlePassword} className="input"
                                    value={password} type="password" />
                         </div>
-
                         <div className='registration-buttons'>
-
                             <div className='form-button'>
                                 <button  onClick={handleSubmit} className="btn" type="submit">
                                     Login
