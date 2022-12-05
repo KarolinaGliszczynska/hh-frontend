@@ -43,14 +43,14 @@ const Registration = () => {
             setError(true);
             setErrorMessageText("Both passwords must be the same")
         } else {
-            register(userNickname,userEmail,password);
+            register();
         }
     };
 
-    const register = (username, email, password) => {
+    const register = () => {
         return axios.post("http://localhost:8080/api/auth/users/register", {
-            username,
-            email,
+            userNickname,
+            userEmail,
             password,
         }).then((response) => {
             handleResponseFromServer(response)
@@ -64,7 +64,8 @@ const Registration = () => {
             setError(false);
         } else if (res.status === 400){
             setError(true);
-            res.text().then((s) => setErrorMessageText(s));
+            setErrorMessageText(res.data);
+            //res.text().then((s) => setErrorMessageText(s));
         } else {
             setError(true);
             setErrorMessageText("Something went wrong...")

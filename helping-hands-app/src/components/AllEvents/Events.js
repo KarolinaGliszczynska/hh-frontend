@@ -18,8 +18,24 @@ const Events = () => {
         },
         [])
 
-    const fetchEvents = ()=>{
+    const fetchEvents = () => {
         return axios.get('http://localhost:8080/events')
+            .then(res => {
+                setIsPending(false);
+                setEvents(res.data);
+            })
+    }
+
+    const fetchEventsByCity = () => {
+        return axios.get(`http://localhost:8080/events/city/${city}`)
+            .then(res => {
+                setIsPending(false);
+                setEvents(res.data);
+            })
+    }
+
+    const fetchEventsByCategory = () => {
+        return axios.get(`http://localhost:8080/events/category/${category}`)
             .then(res => {
                 setIsPending(false);
                 setEvents(res.data);
@@ -50,7 +66,6 @@ const Events = () => {
                                     </div>
                                 </Link>))
                             : (<p>loading events...</p>)}
-                        ))}
                     </div>
             </div>
           </>
