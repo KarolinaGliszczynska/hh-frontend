@@ -901,6 +901,9 @@ transform: scale(1.1);}
 
 .invisible {
     visibility: hidden;
+    height: 1px;
+    min-height: 1px;
+    max-height: 1px;
 }
 
 .upload_container button {
