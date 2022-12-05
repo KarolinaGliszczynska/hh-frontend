@@ -12,27 +12,6 @@ import NewEvent from "./components/AllEvents/NewEvent";
 
 const App = () => {
 
-  const [events, setEvents] = useState([]);
-  const [isPending, setIsPending] = useState(true);
-
-  useEffect(() => {
-        fetchEvents();
-      },
-      [])
-
-  const fetchEvents = ()=>{
-    fetch('http://localhost:8080/events')
-        .then(res => {
-          console.log(res);
-          return res.json();
-        })
-        .then(data => {
-          setIsPending(false);
-          setEvents(data);
-        })
-  }
-
-
   return (
     <Router>
       <div >
@@ -46,7 +25,6 @@ const App = () => {
               
             <Route path="/events">
               < Events
-                  events = {events}
               />
             </Route>
 
