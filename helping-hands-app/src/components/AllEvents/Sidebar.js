@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import React from "react";
 
 
 const Sidebar = (props) => (
@@ -12,8 +13,13 @@ const Sidebar = (props) => (
             <li className="sidenav-item">
                 <input type="text" placeholder="City"></input>
             </li>
-            <li className="sidenav-item">
-                <input type="text" placeholder="Category"></input>
+            <li >
+                <select id="categories" name="categories" >
+                    <option value="people">PEOPLE</option>
+                    <option value="animals">ANIMALS</option>
+                    <option value="environment">ENVIRONMENT</option>
+                    <option value="small">SMALL</option>
+                </select>
             </li>
             <li className="sidenav-item">
                 <button type="submit" className="btn-light">Filter</button>

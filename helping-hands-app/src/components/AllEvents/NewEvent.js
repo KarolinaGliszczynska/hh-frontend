@@ -193,7 +193,7 @@ const NewEvent = () => {
 
     return (<>
         <div className='events-main-container events-add'>
-            <h1>Add/edit event</h1>
+            <h1>Create an event</h1>
 
             <ul>
             <li><label>Event Title<input name='title' type="text" placeholder="Title"></input></label></li>
@@ -204,8 +204,10 @@ const NewEvent = () => {
                 <li><label><input type="text" placeholder="Postal Code" name='postal_code'></input></label></li>
 
             <li><label>Event Category<br/><select name='category' placeholder="Select Category">
-                <option>Fashion Show</option>
-                <option>Concert</option>
+                <option>PEOPLE</option>
+                <option>ANIMALS</option>
+                <option>ENVIRONMENT</option>
+                <option>SMALL</option>
             </select></label></li>
 
             <li><label>Event Details<br />
@@ -213,15 +215,14 @@ const NewEvent = () => {
             </label></li>
 
                 <li>
-            <div class='upload_container'>
-                <label>Featured image; files up to 512MB; formats png, img, jpg<input type="file" id="myFile" name="filename"/></label>
+            <div className='upload_container'>
+                <label>Featured image (files up to 512MB; formats png, img, jpg)<input type="file" id="myFile" name="filename"/></label>
             </div>
 
             <br/>
             <label>Event Slots</label><br/>
 
-            <div class="slot_add">
-                <input type="date" placeholder="date"></input>
+            <div className="slot_add">
                 <input type="time" placeholder="from"></input>
                 <input type="time" placeholder="to"></input>
                 <input type="number" placeholder="volunteers"></input>
@@ -236,7 +237,7 @@ const NewEvent = () => {
 
                 <li>
                 <div className='upload_container'>
-                <label>Event files, only files up to 512MB; formats pdf, doc, txt<input type="file" id="myFile" name="filename" multiple="true"/></label>
+                <label>Event files (only files up to 512MB; formats pdf, doc, txt)<input type="file" id="myFile" name="filename" multiple="true"/></label>
                 </div>
                 </li>
 

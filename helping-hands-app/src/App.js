@@ -13,7 +13,6 @@ import NewEvent from "./components/AllEvents/NewEvent";
 const App = () => {
 
   const [events, setEvents] = useState([]);
-  const [clickedEvent, setClickedEvent] = useState(null);
   const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
@@ -33,15 +32,6 @@ const App = () => {
         })
   }
 
-  const handleCardClick = (eventId) => {
-    fetch(`http://localhost:8080/event/{eventId}`)
-        .then(res => {
-          return res.json();
-        })
-        .then(data => {
-          setClickedEvent(data);
-        })
-  }
 
   return (
     <Router>
@@ -57,8 +47,6 @@ const App = () => {
             <Route path="/events">
               < Events
                   events = {events}
-                  handleCardClick = {handleCardClick}
-                  clickedEvent = {clickedEvent}
               />
             </Route>
 
@@ -68,7 +56,6 @@ const App = () => {
 
             <Route path = "/eventDetails/:id">
               <EventDetail
-                  component = {clickedEvent}
               />
             </Route>
 

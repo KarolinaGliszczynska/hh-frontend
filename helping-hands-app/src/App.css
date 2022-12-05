@@ -81,7 +81,7 @@ a:hover { text-decoration: none;
 
 /* buttons, text fields ----------------------------------------------------------*/
 
-input{
+input, select{
 
     width: 100%;
     max-width: 4000px;
@@ -506,6 +506,7 @@ button{
     padding: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin: 5%;
+    cursor: pointer;
 }
 
 .join-button:hover{
@@ -841,11 +842,15 @@ transform: scale(1.1);}
     text-align: center;
     white-space: nowrap;
     min-width: 120px;
-
     background: #CCD8A9;
     border: 1px solid #6F7D50;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     border-radius: 40px;
+    cursor: pointer;
+}
+
+.slot_add button:hover, .events-add button:hover{
+    transform: scale(1.1);
 }
 
 .events-add .slot_add {
