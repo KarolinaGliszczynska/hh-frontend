@@ -33,7 +33,7 @@ const JoinEventCard = ({ event }) => {
     }
 
     const fetchPostRequestToSlot = (slotId) => {
-        return axios.post(`http://localhost:8080/users/assign/${slotId}`)
+        return axios.post(`http://localhost:8080/users/assign/${slotId}`, { withCredentials: true })
             .then((response) => {
                 console.log(response);
                 setSubmitted(true);
@@ -51,7 +51,7 @@ const JoinEventCard = ({ event }) => {
 
 
     const fetchDeleteRequestToSlot = (slotId) => {
-        return axios.post(`http://localhost:8080/users/assign/${slotId}`)
+        return axios.delete(`http://localhost:8080/users/assign/${slotId}`, { withCredentials: true })
             .then((response) => {
                 console.log(response);
                 activateSlotButtons();
