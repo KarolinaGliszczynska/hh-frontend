@@ -1,11 +1,14 @@
 import React, {useState, useRef} from 'react'
 import Calendar from "./Calendar";
+import axios from "axios";
 
 const JoinEventCard = ({ event }) => {
 
     const[chosenSlot, setChosenSlot] = useState(null);
     const previousChoice = useRef(null);
     const [signedUp, setSignedUp] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(false);
 
     const getHourFromSlotStrtTime = (slot) => {
         const slotStartHour = slot.slotStartTime.split('T')[1].split(':')[0];
@@ -23,38 +26,44 @@ const JoinEventCard = ({ event }) => {
 
     const handleJoinClick = () => {
         fetchPostRequestToSlot(chosenSlot);
-        disableSlotButtons();
-        setSignedUp(true);
     }
 
     const handleLeaveEventClick = () => {
         fetchDeleteRequestToSlot(chosenSlot);
-        activateSlotButtons();
-        undoPreviousSelection();
-        setSignedUp(false);
     }
 
     const fetchPostRequestToSlot = (slotId) => {
-        const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Length': 0},
-        };
-        fetch(`http://localhost:8080/users/assign/${slotId}`, requestOptions)
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch((err) => console.log(err));
-    };
+        return axios.post(`http://localhost:8080/users/assign/${slotId}`)
+            .then((response) => {
+                console.log(response);
+                setSubmitted(true);
+                setError(false);
+                disableSlotButtons();
+                setSignedUp(true);
+            }).catch((error) => {
+                if (error.response) {
+                    console.log(error.response);
+                    setSubmitted(false);
+                    setError(true);
+                }
+            })
+    }
+
 
     const fetchDeleteRequestToSlot = (slotId) => {
-        const requestOptions = {
-            method: 'DELETE',
-            headers: {'Content-Length': 0},
-        };
-        fetch(`http://localhost:8080/users/assign/${slotId}`, requestOptions)
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch((err) => console.log(err));
-    };
+        return axios.post(`http://localhost:8080/users/assign/${slotId}`)
+            .then((response) => {
+                console.log(response);
+                activateSlotButtons();
+                undoPreviousSelection();
+                setSignedUp(false);
+            }).catch((error) => {
+                if (error.response) {
+                    console.log(error.response);
+                }
+            })
+    }
+
 
     const changeSlotColorToGreen = (button) => {
         button.classList.remove('inactive');
@@ -83,6 +92,31 @@ const JoinEventCard = ({ event }) => {
         slotButtons.forEach(button => button.classList.remove('disabled'));
     }
 
+    const successMessage = () => {
+        return (
+            <div
+                className="success"
+                style={{
+                    display: submitted ? '' : 'none',
+                }}>
+                <h6> You are now signed up for this event! </h6>
+            </div>
+        );
+    };
+
+    const errorMessage = () => {
+        return (
+            <div
+                className="error"
+                style={{
+                    display: error ? '' : 'none',
+                }}>
+                <h6> You must be logged in to join an event! </h6>
+            </div>
+        );
+    };
+
+
     return (
         <div className='event-detail-col-2'>
             <div className='join-event-card'>
@@ -94,20 +128,27 @@ const JoinEventCard = ({ event }) => {
                     /> : " "}
                 </div>
 
+                <div className="messages">
+                    {errorMessage()}
+                    {successMessage()}
+                </div>
+
                 <div className='slot-title'>
                     <h4>Pick a time slot</h4>
                 </div>
-            <div className='slot-buttons-container'>
-              {event.eventSlots
-                ? (event.eventSlots.map(slot =>
-                      <button key = {slot.slotId}
-                          slot-id={slot.slotId}
-                          className={ 'slot-button inactive' }
-                          onClick={(event)=>handleSlotClick(event)}>
-                      { getHourFromSlotStrtTime(slot) }
-                      </button>))
-                : (<p>loading slots...</p>)}
-            </div>
+
+                <div className='slot-buttons-container'>
+                  {event.eventSlots
+                    ? (event.eventSlots.map(slot =>
+                          <button key = {slot.slotId}
+                              slot-id={slot.slotId}
+                              className={ 'slot-button inactive' }
+                              onClick={(event)=>handleSlotClick(event)}>
+                          { getHourFromSlotStrtTime(slot) }
+                          </button>))
+                    : (<p>loading slots...</p>)}
+                </div>
+
                 <div className='button-row'>
                     { !signedUp
                     ? (<button className='join-button' onClick={(event)=>handleJoinClick(event)}>Join</button>)
@@ -116,7 +157,7 @@ const JoinEventCard = ({ event }) => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default JoinEventCard

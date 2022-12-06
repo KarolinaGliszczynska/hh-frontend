@@ -41,15 +41,17 @@ const Login = () => {
         }).then((response) => {
             handleResponseFromServer(response)
         }).catch((error) => {
-            if (error. response) {
+            if (error.response) {
                 handleError(error.response);
             }
         })
     };
 
     const handleResponseFromServer = (res) => {
+        console.log(res);
         setSubmitted(true);
         setError(false);
+        localStorage.setItem("user", JSON.stringify(res.data));
     };
 
     const handleError = (res) => {
@@ -63,15 +65,6 @@ const Login = () => {
             setErrorMessageText("Something went wrong...")
         }
     }
-
-    const logout = () => {
-        localStorage.removeItem("user");
-        return axios.post("http://localhost:8080/api/auth/signout")
-            .then((res) => {
-                console.log(res);
-            });
-    };
-
     const successMessage = () => {
         return (
             <div
