@@ -3,22 +3,37 @@ import React from 'react';
 import axios from "axios";
 import {useEffect, useState} from "react";
 //import { NavbarMenuItems } from "./NavbarMenuItems"
+import EventBus from "./EventBus";
 
 
 const Navbar = (props) => {
-    const [isLoggedIn, setIsLoggedIn] = useState();
+    const [currentUser, setCurrentUser] = useState(undefined);
 
     useEffect(() => {
-            if (localStorage.getItem('email') === null){
-                setIsLoggedIn(false);
-            } else {
-                setIsLoggedIn(true);
-            }
-        },
-        [])
+        const user = JSON.parse(localStorage.getItem("user"));
 
-    const handleLogout = (e) => {
+        if (user) {
+            setCurrentUser(user);
+        }
+
+        EventBus.on("logout", () => {
+            logOut();
+        });
+
+        return () => {
+            EventBus.remove("logout");
+        };
+    }, []);
+
+
+    const logOut = (e) => {
         e.preventDefault();
+        handleLogout();
+        setCurrentUser(undefined);
+    };
+
+
+    const handleLogout = () => {
         return axios.post("http://localhost:8080/api/auth/signout")
             .then((response) => {
             console.log(response);
@@ -44,17 +59,19 @@ const Navbar = (props) => {
 
             <div>
                 <ul className='menu-items'>
+                    {currentUser ? (
                     <>
-                            <li key="navbar-1">
-                                <a className='nav-links' href="/registration"> Sign Up </a>
-                            </li>
-                            <li key="navbar-2">
-                                <a className='nav-links' href="/login"> Log in </a>
-                            </li>
+                        <li key="navbar-1">
+                            <a className='nav-links' href="/registration"> Sign Up </a>
+                        </li>
+                        <li key="navbar-2">
+                            <a className='nav-links' href="/login"> Log in </a>
+                        </li>
                     </>
+                        ):(
                     <li key="navbar-3">
-                        <a className='nav-links' href="/" onClick={handleLogout}> Log out </a>
-                    </li>
+                        <a className='nav-links' href="/" onClick={ logOut }> Log out </a>
+                    </li> )}
                 </ul>
             </div>
         </div>
