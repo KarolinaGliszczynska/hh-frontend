@@ -29,7 +29,11 @@ const NewEvent = () => {
                         return;
                     }
                     let bb = reader.result;
-                    callback(new Uint8Array(bb));
+                    bb = new Uint8Array(bb)
+                    let out = [];
+                    for (let i=0; i<bb.length; i++)
+                        out.push(bb[i]);
+                    callback(out);
                 };
                 reader.readAsArrayBuffer(f);
             };
@@ -43,18 +47,18 @@ const NewEvent = () => {
                     if (el.classList.contains("invisible"))
                         return;
                     let allInputs = el.querySelectorAll("div");
-                    let slot = {};
-                    slot["date"] = allInputs[0].innerText;
-                    slot["start"] = allInputs[1].innerText;
-                    slot["end"] = allInputs[2].innerText;
-                    slot["volunteers"] = allInputs[3].innerText;
-                    slots.push(slot);
+                    let slot = [];
+                    slot.push(allInputs[0].innerText); // date, start, end, volunteerrs
+                    slot.push(allInputs[1].innerText);
+                    slot.push(allInputs[2].innerText);
+                    slot.push(allInputs[3].innerText);
+                    slots.push(slot.join("|"));
                 });
 
                 let post_data = {};
                 post_data["eventTitle"] = myform.querySelector("input[name=title]").value;
-                post_data["dateOfEvent "] = myform.querySelector("input[name=date]").value;
-                post_data["EventCategory "] = myform.querySelector("select[name=category]").value;
+                post_data["dateOfEvent"] = myform.querySelector("input[name=date]").value;
+                post_data["eventCategory"] = myform.querySelector("select[name=category]").value;
                 post_data["eventDescription"] = myform.querySelector("textarea[name=description]").value;
                 post_data["address"] = myform.querySelector("input[name=address]").value;
                 post_data["city"] = myform.querySelector("input[name=city]").value;
@@ -73,10 +77,13 @@ const NewEvent = () => {
                     }
 
                     post_data["eventFiles"] = event_files;
-
                     let fetch_opts = {};
                     fetch_opts['method'] = "POST";
-                    fetch_opts['body'] = JSON.stringify({post_data});
+                    fetch_opts['body'] = JSON.stringify(post_data);
+                    fetch_opts['headers'] = {
+                        'Content-Type': 'application/json'
+                    };
+
                     fetch('http://localhost:8080/events/createNew', fetch_opts)
                         .then(res => {
                             return res.json();
@@ -193,7 +200,7 @@ const NewEvent = () => {
 
     return (<>
         <div className='events-main-container events-add'>
-            <h1>Create an event</h1>
+            <h1>Add/edit event</h1>
 
             <ul>
             <li><label>Event Title<input name='title' type="text" placeholder="Title"></input></label></li>
@@ -204,10 +211,8 @@ const NewEvent = () => {
                 <li><label><input type="text" placeholder="Postal Code" name='postal_code'></input></label></li>
 
             <li><label>Event Category<br/><select name='category' placeholder="Select Category">
-                <option>PEOPLE</option>
-                <option>ANIMALS</option>
-                <option>ENVIRONMENT</option>
-                <option>SMALL</option>
+                <option>Fashion Show</option>
+                <option>Concert</option>
             </select></label></li>
 
             <li><label>Event Details<br />
@@ -215,14 +220,15 @@ const NewEvent = () => {
             </label></li>
 
                 <li>
-            <div className='upload_container'>
-                <label>Featured image (files up to 512MB; formats png, img, jpg)<input type="file" id="myFile" name="filename"/></label>
+            <div class='upload_container'>
+                <label>Featured image; files up to 512MB; formats png, img, jpg<input type="file" id="myFile" name="filename"/></label>
             </div>
 
             <br/>
             <label>Event Slots</label><br/>
 
-            <div className="slot_add">
+            <div class="slot_add">
+                <input type="date" placeholder="date"></input>
                 <input type="time" placeholder="from"></input>
                 <input type="time" placeholder="to"></input>
                 <input type="number" placeholder="volunteers"></input>
@@ -235,13 +241,13 @@ const NewEvent = () => {
             </div>
                 </li>
 
-                <li>
+                <li className='invisible'>
                 <div className='upload_container'>
-                <label>Event files (only files up to 512MB; formats pdf, doc, txt)<input type="file" id="myFile" name="filename" multiple="true"/></label>
+                <label>Event files, only files up to 512MB; formats pdf, doc, txt<input type="file" id="myFile" name="filename" multiple="true"/></label>
                 </div>
                 </li>
 
-                <li><button type='submit'>Create Event</button></li>
+                <li><br/><button type='submit'>Create Event</button></li>
             </ul>
         </div>
         </>)

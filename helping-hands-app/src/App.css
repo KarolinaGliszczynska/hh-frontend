@@ -333,7 +333,7 @@ button{
     margin-top: 48px;
     margin-left: 250px;
     padding: 1%;
-    background: var(--neutral-200);
+    background: white;
 }
 .events-container {
     display: flex;
