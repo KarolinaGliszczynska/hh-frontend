@@ -1,6 +1,7 @@
 import React, {useState, useRef} from 'react'
 import Calendar from "./Calendar";
 import axios from "axios";
+import {useEffect} from "react";
 
 const JoinEventCard = ({ event }) => {
 
@@ -9,6 +10,17 @@ const JoinEventCard = ({ event }) => {
     const [signedUp, setSignedUp] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
+    const [currentUser, setCurrentUser] = useState(undefined);
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user) {
+            setCurrentUser(user);
+            activateJoinButton();
+        } else {
+            disableJoinButton()
+        }
+    }, []);
 
     const getHourFromSlotStrtTime = (slot) => {
         const slotStartHour = slot.slotStartTime.split('T')[1].split(':')[0];
@@ -57,9 +69,14 @@ const JoinEventCard = ({ event }) => {
                 activateSlotButtons();
                 undoPreviousSelection();
                 setSignedUp(false);
+                setSubmitted(false);
             }).catch((error) => {
                 if (error.response) {
                     console.log(error.response);
+                    activateSlotButtons();
+                    undoPreviousSelection();
+                    setSignedUp(false);
+                    setSubmitted(false);
                 }
             })
     }
@@ -92,6 +109,16 @@ const JoinEventCard = ({ event }) => {
         slotButtons.forEach(button => button.classList.remove('disabled'));
     }
 
+    const disableJoinButton = () => {
+        const joinButton = document.querySelector(".join-button");
+        joinButton.classList.add('disabled');
+    }
+
+    const activateJoinButton = () => {
+        const joinButton = document.querySelector(".join-button");
+        joinButton.classList.remove('disabled');
+    }
+
     const successMessage = () => {
         return (
             <div
@@ -99,19 +126,19 @@ const JoinEventCard = ({ event }) => {
                 style={{
                     display: submitted ? '' : 'none',
                 }}>
-                <h6> You are now signed up for this event! </h6>
+                <h5> You are now signed up for this event! </h5>
             </div>
         );
     };
 
-    const errorMessage = () => {
+    const userNotLoggedInMessage = () => {
         return (
             <div
                 className="error"
                 style={{
-                    display: error ? '' : 'none',
+                    display: !currentUser ? '' : 'none',
                 }}>
-                <h6> You must be logged in to join an event! </h6>
+                <h5> You must be logged in to join an event! </h5>
             </div>
         );
     };
@@ -129,8 +156,8 @@ const JoinEventCard = ({ event }) => {
                 </div>
 
                 <div className="messages">
-                    {errorMessage()}
-                    {successMessage()}
+                    { userNotLoggedInMessage() }
+                    { successMessage() }
                 </div>
 
                 <div className='slot-title'>

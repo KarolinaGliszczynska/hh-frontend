@@ -511,6 +511,13 @@ button{
 
 .join-button:hover{
     transform: scale(1.1);
+    background-color: #5A6B3A;
+}
+
+.join-button.disabled{
+    pointer-events: none;
+    background-color: #EAF2CF;
+    color: black;
 }
 
 .event-card-category h5{

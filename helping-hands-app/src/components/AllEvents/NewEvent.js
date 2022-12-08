@@ -4,17 +4,18 @@ import Header from "./Header";
 import {useState, useEffect} from "react";
 
 let Loaded = false;
-const NewEvent = () => {
-
+const NewEvent = ( { userLoggedIn }) => {
+    /*
     const [currentUser, setCurrentUser] = useState(undefined);
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
-
         if (user) {
             setCurrentUser(user);
         }
     }, []);
+
+     */
 
     let get_file = function(f) {
      //   let reader = new FileReader();
@@ -100,6 +101,8 @@ const NewEvent = () => {
                             return res.json();
                         })
                         .then(data => {
+                            alert("New event was created");
+                            /*
                             if (data.error != null)
                             {
                                 if (data.message != null)
@@ -108,8 +111,9 @@ const NewEvent = () => {
                                     alert("Error: \n" + data.error);
                             }
                             return;
+                             */
                         })
-                        .catch((err) => alert(err));
+                        .catch((err) => console.log(err));
                 }
 
                 files_to_load = 0;
@@ -166,17 +170,10 @@ const NewEvent = () => {
             el.classList.remove("error");
         })
 
-        let date = inputs[0].value;
-        let from = inputs[1].value;
-        let to = inputs[2].value;
-        let vol = inputs[3].value;
+        let from = inputs[0].value;
+        let to = inputs[1].value;
+        let vol = inputs[2].value;
 
-        if (date.length == 0) {
-            inputs[0].classList.add("error");
-            inputs[0].focus();
-            alert("Please enter date");
-            return;
-        }
         if (from.length == 0) {
             inputs[1].classList.add("error");
             inputs[1].focus();
@@ -214,7 +211,7 @@ const NewEvent = () => {
             <div
                 className="error"
                 style={{
-                    display: !currentUser ? '' : 'none',
+                    display: !userLoggedIn ? '' : 'none',
                 }}>
                 <h3> You must be logged-in to create an event! </h3>
             </div>

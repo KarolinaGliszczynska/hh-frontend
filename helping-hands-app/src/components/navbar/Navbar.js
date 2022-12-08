@@ -7,13 +7,12 @@ import EventBus from "./EventBus";
 
 
 const Navbar = ( {userLoggedIn, handleLogin} ) => {
-    const [currentUser, setCurrentUser] = useState(undefined);
 
 
     const logOut = (e) => {
         e.preventDefault();
         handleLogout();
-        setCurrentUser(undefined);
+        //setCurrentUser(undefined);
     };
 
 

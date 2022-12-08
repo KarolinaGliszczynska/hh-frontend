@@ -8,7 +8,7 @@ import Contact from './components/contact'
 import './App.css'
 import EventDetail from './components/EventDetail'
 import NewEvent from "./components/AllEvents/NewEvent";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 const App = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -16,6 +16,13 @@ const App = () => {
   const handleLogin = (loggedIn) => {
     setUserLoggedIn(loggedIn)
   }
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setUserLoggedIn(true);
+    }
+  }, [userLoggedIn]);
 
   return (
     <Router>
@@ -36,7 +43,9 @@ const App = () => {
             </Route>
 
             <Route path="/newEvent">
-              < NewEvent />
+              < NewEvent
+                  userLoggedIn = { userLoggedIn }
+              />
             </Route>
 
             <Route path = "/eventDetails/:id">
