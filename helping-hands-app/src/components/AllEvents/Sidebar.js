@@ -40,11 +40,11 @@ const Sidebar = ( { handleFilter } ) => {
                 </li>
                 <li >
                     <select id="categories" name="categories" onChange={ handleCategory }>
-                        <option value="">Categories</option>
-                        <option value="PEOPLE">PEOPLE</option>
-                        <option value="ANIMALS">ANIMALS</option>
-                        <option value="ENVIRONMENT">ENVIRONMENT</option>
-                        <option value="SMALL">SMALL</option>
+                        <option value="">All categories</option>
+                        <option value="PEOPLE">People</option>
+                        <option value="ANIMALS">Animals</option>
+                        <option value="ENVIRONMENT">Environment</option>
+                        <option value="SMALL">Small</option>
                     </select>
                 </li>
                 <li className="sidenav-item">

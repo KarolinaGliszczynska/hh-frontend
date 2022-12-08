@@ -43,15 +43,16 @@ const Events = () => {
     }
 
     const handleFilter = (city, category) =>{
+        console.log(city, category);
         if(category){
-            fetchEventsByCategory(category)
+            fetchEventsByCategory(category.toUpperCase())
             return
         }
         if(city){
             fetchEventsByCity(city)
             return
         }
-        console.log(city, category);
+        fetchEvents();
     }
 
 
