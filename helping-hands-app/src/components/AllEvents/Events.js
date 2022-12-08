@@ -9,8 +9,8 @@ import axios from "axios";
 const Events = () => {
 
     const [events, setEvents] = useState([]);
-    const [city, setCity] = useState("");
-    const [category, setCategory] = useState("");
+    //const [city, setCity] = useState(undefined);
+    //const [category, setCategory] = useState(undefined);
     const [isPending, setIsPending] = useState(true);
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const Events = () => {
             })
     }
 
-    const fetchEventsByCity = () => {
+    const fetchEventsByCity = (city) => {
         return axios.get(`http://localhost:8080/events/city/${city}`)
             .then(res => {
                 setIsPending(false);
@@ -34,7 +34,7 @@ const Events = () => {
             })
     }
 
-    const fetchEventsByCategory = () => {
+    const fetchEventsByCategory = (category) => {
         return axios.get(`http://localhost:8080/events/category/${category}`)
             .then(res => {
                 setIsPending(false);
@@ -42,15 +42,23 @@ const Events = () => {
             })
     }
 
-    const wrapperSetEvents = useCallback(city => {
-        setCity(city);
-    }, []);
+    const handleFilter = (city, category) =>{
+        if(category){
+            fetchEventsByCategory(category)
+            return
+        }
+        if(city){
+            fetchEventsByCity(city)
+            return
+        }
+        console.log(city, category);
+    }
 
 
     return (
           <>
             < Sidebar
-
+                handleFilter = { handleFilter }
             />
             <div className='events-main-container'>
                 < Header  />

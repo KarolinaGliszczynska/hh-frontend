@@ -2,13 +2,32 @@ import React from "react";
 import {useState} from "react";
 
 
-const Sidebar = ( {changeCity, changeCategory} ) => {
-    const [city, setCity] = useState("");
-    const [category, setCategory] = useState("");
+const Sidebar = ( { handleFilter } ) => {
+    const [city, setCity] = useState(undefined);
+    const [category, setCategory] = useState(undefined);
 
-    const handleFilter = () => {
-        console.log("Filter")
+    const handleCity = (e) => {
+        setCity(e.target.value);
+    };
+
+    const handleCategory = (e) => {
+        setCategory(e.target.value);
+    };
+
+    const onFilterClick = (e) => {
+        e.preventDefault();
+        const choiceCategory = document.querySelector("#categories");
+
+        if (choiceCategory.value === ""){
+            setCategory(undefined)
+        }
+        if (!city){
+            setCity(undefined)
+        }
+        //console.log(city, category);
+        handleFilter(city, category)
     }
+
 
     return (
         <nav className='sidenav'>
@@ -17,19 +36,19 @@ const Sidebar = ( {changeCity, changeCategory} ) => {
                     <h5 className="thin-header">Check who needs help in your area!</h5>
                 </li>
                 <li className="sidenav-item">
-                    <input type="text" placeholder="City"></input>
+                    <input id="city" type="text" placeholder="City" onChange={ handleCity }></input >
                 </li>
                 <li >
-                    <select id="categories" name="categories" >
-                        <option> Category </option>
-                        <option value="people">PEOPLE</option>
-                        <option value="animals">ANIMALS</option>
-                        <option value="environment">ENVIRONMENT</option>
-                        <option value="small">SMALL</option>
+                    <select id="categories" name="categories" onChange={ handleCategory }>
+                        <option value="">Categories</option>
+                        <option value="PEOPLE">PEOPLE</option>
+                        <option value="ANIMALS">ANIMALS</option>
+                        <option value="ENVIRONMENT">ENVIRONMENT</option>
+                        <option value="SMALL">SMALL</option>
                     </select>
                 </li>
                 <li className="sidenav-item">
-                    <button type="submit" className="btn-light" onClick={ handleFilter }>Filter</button>
+                    <button type="submit" className="btn-light" onClick={ onFilterClick }>Filter</button>
                 </li>
 
             </ul>
