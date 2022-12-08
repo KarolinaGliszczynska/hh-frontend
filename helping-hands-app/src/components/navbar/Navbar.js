@@ -6,24 +6,8 @@ import {useEffect, useState} from "react";
 import EventBus from "./EventBus";
 
 
-const Navbar = (props) => {
+const Navbar = ( {userLoggedIn, handleLogin} ) => {
     const [currentUser, setCurrentUser] = useState(undefined);
-
-    useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user"));
-
-        if (user) {
-            setCurrentUser(user);
-        }
-
-        EventBus.on("logout", () => {
-            logOut();
-        });
-
-        return () => {
-            EventBus.remove("logout");
-        };
-    }, []);
 
 
     const logOut = (e) => {
@@ -39,6 +23,7 @@ const Navbar = (props) => {
             console.log(response);
             alert("You have been logged out!");
             localStorage.removeItem("user");
+            handleLogin(false);
         }).catch((error) => {
             if (error.response) {
                 console.log(error.response);
@@ -59,7 +44,7 @@ const Navbar = (props) => {
 
             <div>
                 <ul className='menu-items'>
-                    {currentUser ? (
+                    {!userLoggedIn ? (
                     <>
                         <li key="navbar-1">
                             <a className='nav-links' href="/registration"> Sign Up </a>

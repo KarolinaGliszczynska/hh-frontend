@@ -8,13 +8,21 @@ import Contact from './components/contact'
 import './App.css'
 import EventDetail from './components/EventDetail'
 import NewEvent from "./components/AllEvents/NewEvent";
+import {useState} from "react";
 
 const App = () => {
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
+  const handleLogin = (loggedIn) => {
+    setUserLoggedIn(loggedIn)
+  }
 
   return (
     <Router>
       <div >
-        < Navbar 
+        < Navbar
+            userLoggedIn = { userLoggedIn }
+            handleLogin = { handleLogin }
         />
         <div>
           <Switch>
@@ -37,7 +45,9 @@ const App = () => {
             </Route>
 
             <Route path = "/login">
-              <Login />
+              <Login
+                  handleLogin = { handleLogin }
+              />
             </Route>
 
             <Route path = "/registration">

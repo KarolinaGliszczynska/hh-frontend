@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import googleLogo from './google-icon.png';
 import axios from "axios";
 
-const Login = () => {
+const Login = ( {handleLogin} ) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -52,6 +52,7 @@ const Login = () => {
         setSubmitted(true);
         setError(false);
         localStorage.setItem("user", JSON.stringify(res.data));
+        handleLogin(true);
     };
 
     const handleError = (res) => {

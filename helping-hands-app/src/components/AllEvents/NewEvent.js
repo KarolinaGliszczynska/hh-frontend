@@ -1,9 +1,20 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+import {useState, useEffect} from "react";
 
 let Loaded = false;
 const NewEvent = () => {
+
+    const [currentUser, setCurrentUser] = useState(undefined);
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (user) {
+            setCurrentUser(user);
+        }
+    }, []);
 
     let get_file = function(f) {
      //   let reader = new FileReader();
@@ -198,9 +209,25 @@ const NewEvent = () => {
         source.parentNode.appendChild(newNode);
     }
 
+    const errorMessage = () => {
+        return (
+            <div
+                className="error"
+                style={{
+                    display: !currentUser ? '' : 'none',
+                }}>
+                <h3> You must be logged-in to create an event! </h3>
+            </div>
+        );
+    };
+
     return (<>
         <div className='events-main-container events-add'>
             <h1>Add/edit event</h1>
+
+            <div className="messages">
+                {errorMessage()}
+            </div>
 
             <ul>
             <li><label>Event Title<input name='title' type="text" placeholder="Title"></input></label></li>
@@ -211,8 +238,10 @@ const NewEvent = () => {
                 <li><label><input type="text" placeholder="Postal Code" name='postal_code'></input></label></li>
 
             <li><label>Event Category<br/><select name='category' placeholder="Select Category">
-                <option>Fashion Show</option>
-                <option>Concert</option>
+                <option>PEOPLE</option>
+                <option>ANIMALS</option>
+                <option>ENVIRONMENT</option>
+                <option>SMALL</option>
             </select></label></li>
 
             <li><label>Event Details<br />
@@ -228,7 +257,6 @@ const NewEvent = () => {
             <label>Event Slots</label><br/>
 
             <div class="slot_add">
-                <input type="date" placeholder="date"></input>
                 <input type="time" placeholder="from"></input>
                 <input type="time" placeholder="to"></input>
                 <input type="number" placeholder="volunteers"></input>
