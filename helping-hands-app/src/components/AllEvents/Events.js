@@ -19,7 +19,7 @@ const Events = () => {
         [])
 
     const fetchEvents = () => {
-        return axios.get('http://localhost:8080/events')
+        return axios.get('http://localhost:3000/api/events')
             .then(res => {
                 setIsPending(false);
                 setEvents(res.data);
@@ -27,7 +27,7 @@ const Events = () => {
     }
 
     const fetchEventsByCity = () => {
-        return axios.get(`http://localhost:8080/events/city/${city}`)
+        return axios.get(`http://localhost:3000/api/events/city/${city}`)
             .then(res => {
                 setIsPending(false);
                 setEvents(res.data);
@@ -35,7 +35,7 @@ const Events = () => {
     }
 
     const fetchEventsByCategory = () => {
-        return axios.get(`http://localhost:8080/events/category/${category}`)
+        return axios.get(`http://localhost:3000/api/events/category/${category}`)
             .then(res => {
                 setIsPending(false);
                 setEvents(res.data);

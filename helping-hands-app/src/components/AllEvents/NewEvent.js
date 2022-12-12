@@ -2,6 +2,7 @@ import React from 'react'
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import {useState, useEffect} from "react";
+import axios from "axios";
 
 let Loaded = false;
 const NewEvent = () => {
@@ -16,14 +17,6 @@ const NewEvent = () => {
         }
     }, []);
 
-    let get_file = function(f) {
-     //   let reader = new FileReader();
-
-      //  var arrayBuffer = this.result,
-      //  array = new Uint8Array(arrayBuffer),
-      //  binaryString = String.fromCharCode.apply(null, array);
-      //  reader.readAsArrayBuffer(f);
-    }
 
 
     useEffect(()=> {
@@ -95,7 +88,8 @@ const NewEvent = () => {
                         'Content-Type': 'application/json'
                     };
 
-                    fetch('http://localhost:8080/events/createNew', fetch_opts)
+                    // fetch must be written in axios to work
+                    fetch('http://localhost:3000/events/createNew', fetch_opts)
                         .then(res => {
                             return res.json();
                         })

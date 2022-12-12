@@ -18,7 +18,7 @@ const Navbar = ( {userLoggedIn, handleLogin} ) => {
 
 
     const handleLogout = () => {
-        return axios.post("http://localhost:8080/api/auth/signout")
+        return axios.post("http://localhost:3000/api/auth/signout")
             .then((response) => {
             console.log(response);
             alert("You have been logged out!");
