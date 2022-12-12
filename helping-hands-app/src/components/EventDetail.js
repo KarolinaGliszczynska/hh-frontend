@@ -6,9 +6,11 @@ import EventDetailCard from "./EventDetailCard";
 const EventDetail = ({match}) => {
     const {id} = useParams();
     const [event, setEvent] = useState([]);
+
     useEffect(() => {
         fetchEvent();
     }, []);
+
     const fetchEvent = () => {
         fetch(`http://localhost:3000/api/events/${id}`)
             .then(res => {

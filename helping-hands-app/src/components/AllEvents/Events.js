@@ -9,8 +9,6 @@ import axios from "axios";
 const Events = () => {
 
     const [events, setEvents] = useState([]);
-    //const [city, setCity] = useState(undefined);
-    //const [category, setCategory] = useState(undefined);
     const [isPending, setIsPending] = useState(true);
 
     useEffect(() => {
@@ -26,7 +24,7 @@ const Events = () => {
             })
     }
 
-    const fetchEventsByCity = () => {
+    const fetchEventsByCity = (city) => {
         return axios.get(`http://localhost:3000/api/events/city/${city}`)
             .then(res => {
                 setIsPending(false);
@@ -34,7 +32,7 @@ const Events = () => {
             })
     }
 
-    const fetchEventsByCategory = () => {
+    const fetchEventsByCategory = (category) => {
         return axios.get(`http://localhost:3000/api/events/category/${category}`)
             .then(res => {
                 setIsPending(false);
