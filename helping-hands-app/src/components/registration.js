@@ -48,7 +48,7 @@ const Registration = () => {
     };
 
     const register = () => {
-        return axios.post("http://localhost:8080/api/auth/users/register", {
+        return axios.post("http://localhost:3000/api/auth/users/register", {
             userNickname,
             userEmail,
             password,

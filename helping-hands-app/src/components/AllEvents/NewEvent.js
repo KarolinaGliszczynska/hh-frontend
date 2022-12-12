@@ -2,6 +2,7 @@ import React from 'react'
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import {useState, useEffect} from "react";
+import axios from "axios";
 
 let Loaded = false;
 const NewEvent = ( { userLoggedIn }) => {
@@ -10,6 +11,7 @@ const NewEvent = ( { userLoggedIn }) => {
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
+
         if (user) {
             setCurrentUser(user);
         }
@@ -96,7 +98,8 @@ const NewEvent = ( { userLoggedIn }) => {
                         'Content-Type': 'application/json'
                     };
 
-                    fetch('http://localhost:8080/events/createNew', fetch_opts)
+                    // fetch must be written in axios to work
+                    fetch('http://localhost:3000/events/createNew', fetch_opts)
                         .then(res => {
                             return res.json();
                         })

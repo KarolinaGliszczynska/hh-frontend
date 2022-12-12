@@ -19,23 +19,23 @@ const Events = () => {
         [])
 
     const fetchEvents = () => {
-        return axios.get('http://localhost:8080/events')
+        return axios.get('http://localhost:3000/api/events')
             .then(res => {
                 setIsPending(false);
                 setEvents(res.data);
             })
     }
 
-    const fetchEventsByCity = (city) => {
-        return axios.get(`http://localhost:8080/events/city/${city}`)
+    const fetchEventsByCity = () => {
+        return axios.get(`http://localhost:3000/api/events/city/${city}`)
             .then(res => {
                 setIsPending(false);
                 setEvents(res.data);
             })
     }
 
-    const fetchEventsByCategory = (category) => {
-        return axios.get(`http://localhost:8080/events/category/${category}`)
+    const fetchEventsByCategory = () => {
+        return axios.get(`http://localhost:3000/api/events/category/${category}`)
             .then(res => {
                 setIsPending(false);
                 setEvents(res.data);
