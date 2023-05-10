@@ -3,6 +3,8 @@ import pic from './register-pic.jpg'
 import { Link } from "react-router-dom"
 import googleLogo from './google-icon.png'
 import axios from "axios";
+import React from 'react'
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Registration = () => {
 
@@ -13,6 +15,7 @@ const Registration = () => {
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
     const [errorMessageText, setErrorMessageText] = useState('');
+    const [disabledBtn, setDisabledBtn] = useState(true);
 
     const handleName = (e) => {
         setUserNickname(e.target.value);
@@ -153,9 +156,17 @@ const Registration = () => {
                                value={password2} type="password" />
                     </div>
 
+                    <ReCAPTCHA
+                                sitekey = {process.env.REACT_APP_SITE_KEY}
+                                theme={"dark"}
+                                size={"normal"}
+                                onChange={() => setDisabledBtn(false)}
+                                onErrored={()=>{console.log("captcha error")}}
+                    />
+
                     <div className='registration-buttons'>
                         <div className='form-button'>
-                            <button  onClick={handleSubmit} className="btn" type="submit">
+                            <button  onClick={handleSubmit} className="btn" type="submit" disabled={disabledBtn}>
                                 Submit
                             </button>
                         </div>

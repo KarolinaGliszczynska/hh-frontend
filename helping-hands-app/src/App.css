@@ -418,6 +418,8 @@ button{
     align-items: start;
 }
 
+
+
 .event-detail-card {
     background: var(--neutral-25);
     margin:5%;
@@ -829,6 +831,16 @@ transform: scale(1.1);}
 
 
 /*-------------------Add Event --------------------*/
+.events-add{
+    background: var(--neutral-25);
+    width: 60%;
+    margin: 40px auto 30px;
+    padding: 5%;
+    left: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.15);
+    display: flex;
+}
 
 .events-add ul, .events-add ul li {
     list-style-type: none;

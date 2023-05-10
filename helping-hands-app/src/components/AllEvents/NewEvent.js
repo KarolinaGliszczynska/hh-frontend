@@ -222,63 +222,65 @@ const NewEvent = ( { userLoggedIn }) => {
     };
 
     return (<>
-        <div className='events-main-container events-add'>
-            <h1>Add/edit event</h1>
+        <div className='event-detail-box row'>
+            <div className="events-add">
+                <h1>Add/edit event</h1>
 
-            <div className="messages">
-                {errorMessage()}
-            </div>
-
-            <ul>
-            <li><label>Event Title<input name='title' type="text" placeholder="Title"></input></label></li>
-            <li><label>Event Date<input name='date' type="date" placeholder="Date"></input></label></li>
-            <li>
-                <label>Event Address<input type="text" placeholder="Address" name='address'></input></label></li>
-                <li><label><input type="text" placeholder="City" name='city'></input></label></li>
-                <li><label><input type="text" placeholder="Postal Code" name='postal_code'></input></label></li>
-
-            <li><label>Event Category<br/><select name='category' placeholder="Select Category">
-                <option>PEOPLE</option>
-                <option>ANIMALS</option>
-                <option>ENVIRONMENT</option>
-                <option>SMALL</option>
-            </select></label></li>
-
-            <li><label>Event Details<br />
-            <textarea placeholder="Enter event details" name='description'></textarea>
-            </label></li>
-
-                <li>
-            <div class='upload_container'>
-                <label>Featured image; files up to 512MB; formats png, img, jpg<input type="file" id="myFile" name="filename"/></label>
-            </div>
-
-            <br/>
-            <label>Event Slots</label><br/>
-
-            <div class="slot_add">
-                <input type="time" placeholder="from"></input>
-                <input type="time" placeholder="to"></input>
-                <input type="number" placeholder="volunteers"></input>
-                <button type="button" onClick={addSlot}>Add Slot</button>
-            </div>
-
-            <div className="slot_display invisible">
-                <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
-                <button type="button" onClick={addSlot}>X</button>
-            </div>
-                </li>
-
-                <li className='invisible'>
-                <div className='upload_container'>
-                <label>Event files, only files up to 512MB; formats pdf, doc, txt<input type="file" id="myFile" name="filename" multiple="true"/></label>
+                <div className="messages">
+                    {errorMessage()}
                 </div>
-                </li>
 
-                <li><br/><button type='submit'>Create Event</button></li>
-            </ul>
+                <ul>
+                    <li><label>Event Title<input name='title' type="text" placeholder="Title"></input></label></li>
+                    <li><label>Event Date<input name='date' type="date" placeholder="Date"></input></label></li>
+                    <li>
+                        <label>Event Address<input type="text" placeholder="Address" name='address'></input></label></li>
+                        <li><label><input type="text" placeholder="City" name='city'></input></label></li>
+                        <li><label><input type="text" placeholder="Postal Code" name='postal_code'></input></label></li>
+
+                    <li><label>Event Category<br/><select name='category' placeholder="Select Category">
+                        <option>PEOPLE</option>
+                        <option>ANIMALS</option>
+                        <option>ENVIRONMENT</option>
+                        <option>SMALL</option>
+                    </select></label></li>
+
+                    <li><label>Event Details<br />
+                    <textarea placeholder="Enter event details" name='description'></textarea>
+                    </label></li>
+
+                        <li>
+                    <div class='upload_container'>
+                        <label>Featured image; files up to 512MB; formats png, img, jpg<input type="file" id="myFile" name="filename"/></label>
+                    </div>
+
+                    <br/>
+                    <label>Event Slots</label><br/>
+
+                    <div class="slot_add">
+                        <input type="time" placeholder="from"></input>
+                        <input type="time" placeholder="to"></input>
+                        <input type="number" placeholder="volunteers"></input>
+                        <button type="button" onClick={addSlot}>Add Slot</button>
+                    </div>
+
+                    <div className="slot_display invisible">
+                        <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
+                        <button type="button" onClick={addSlot}>X</button>
+                    </div>
+                        </li>
+
+                        <li className='invisible'>
+                        <div className='upload_container'>
+                        <label>Event files, only files up to 512MB; formats pdf, doc, txt<input type="file" id="myFile" name="filename" multiple="true"/></label>
+                        </div>
+                        </li>
+
+                        <li><br/><button type='submit'>Create Event</button></li>
+                </ul>
+            </div>
         </div>
-        </>)
+    </>)
 }
 
 export default NewEvent

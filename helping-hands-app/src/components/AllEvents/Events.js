@@ -40,8 +40,20 @@ const Events = () => {
             })
     }
 
+    const fetchEventsByCityAndCategory = (city, category) => {
+        return axios.get(`http://localhost:3000/api/events/${city}/${category}`)
+            .then(res => {
+                setIsPending(false);
+                setEvents(res.data);
+            })
+    }
+
     const handleFilter = (city, category) =>{
         console.log(city, category);
+        if(city && category){
+            fetchEventsByCityAndCategory(city, category)
+            return
+        }
         if(category){
             fetchEventsByCategory(category.toUpperCase())
             return
